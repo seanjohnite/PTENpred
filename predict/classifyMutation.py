@@ -6,11 +6,24 @@ classifyMutation.py
 
 Takes in a mutation, classifies it using a stored sklearn classifier,
 and outputs the category the classifier believes it belongs to.
-Usage: Must use at least one command line argument, string for mutation.
+
+usage: classifyMutation.py [-h] [-c {2,22,3,4}] [-pp PREDPACK]
+                           [-mk {True,False}] [-pr {True,False}]
+                           variant
+
+positional arguments:
+  variant               the variant you want to check
+
 optional arguments:
-string for different classifier
-number of categories to fit to
-possibly which type of two categories
+  -h, --help            show this help message and exit
+  -c {2,22,3,4}, --cats {2,22,3,4}
+                        number of categories to fit to
+  -pp PREDPACK, --predpack PREDPACK
+                        file location of PredictionPackage object
+  -mk {True,False}, --mkpack {True,False}
+                        remake prediction pack?
+  -pr {True,False}, --probs {True,False}
+                        use probabilities?
 """
 
 import argparse
@@ -53,7 +66,7 @@ def get_category_name(class_, num_cats):
         4: ["null", "autism", "somatic", "PHTS"]
     }[num_cats][class_]
 
-def parseArguments():
+def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument('variant', help='the variant you want to check')
     parser.add_argument('-c', '--cats',
@@ -83,7 +96,7 @@ def parseArguments():
 
 def main():
     # parse arguments from command line
-    args = parseArguments()
+    args = parse_arguments()
 
     num_cats = args.cats         # which category split to use (2, 22, 3, 4)
     variant = args.variant       # variant to test/predict

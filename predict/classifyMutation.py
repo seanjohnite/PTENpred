@@ -15,11 +15,7 @@ possibly which type of two categories
 
 import argparse
 from sklearn.externals import joblib
-from sklearn.svm import SVC
-from sklearn.grid_search import GridSearchCV
 from makeIndexVectors import *
-from sklearn.metrics import f1_score, make_scorer
-from sklearn import cross_validation
 import getpass
 
 
@@ -42,77 +38,6 @@ def get_variant_info(variant):
 
     return wtres, codon, mutres
 
-
-def get_classifier(vector_array, cat_array, num_cats, probs):
-    """
-    Function to get a cross-validated grid-searched classifier
-        for training data
-    :param vector_array: numpy array of score vectors
-    :param cat_array: numpy array of classes of score vectors
-    :param num_cats: category split (2, 22, 3, 4)
-    :param probs: boolean, whether to use probabilities in fit
-    :return: cross-validated and grid searched classifier
-    """
-    X, y = vector_array, cat_array
-
-    scorer = {
-        2:  make_scorer(f1_score, pos_label=0),
-        22: make_scorer(f1_score, pos_label=0),
-        3:  make_scorer(f1_score),
-        4:  make_scorer(f1_score)
-    }[num_cats]
-
-    folds = {
-        2:  10,
-        22: 10,
-        3:  10,
-        4:  10
-    }[num_cats]
-
-    param_grid = [
-        {'C': [1, 10, 100, 1000],
-         'kernel': ['linear']},
-        {'C': [1, 10, 100, 1000],
-         'gamma': [0.01, 0.001, 0.0001],
-         'kernel': ['rbf']},
-    ]
-
-    cv = cross_validation.StratifiedKFold(y, folds, shuffle=True)
-
-    clf = GridSearchCV(SVC(cache_size=2000,
-                           class_weight='auto',
-                           probability=probs),
-                       param_grid, scoring=scorer, n_jobs=-1, cv=cv)
-
-    clf = clf.fit(X, y)
-
-    return clf
-
-def get_new_pred_pack(num_cats, probs):
-    """
-    Returns new prediction package object based on the list of known mutations
-    :param num_cats: number of category split (2, 22, 3, 4)
-    :param probs: whether to fit with probability option
-    :return: prediction package object
-    """
-
-    mut_list = get_full_mut_list()
-
-    pten_mutations = MutationGroup(mut_list)
-
-    catArray = {
-        2: pten_mutations.cat2list,
-        22: pten_mutations.cat2_2list,
-        3: pten_mutations.cat3list,
-        4: pten_mutations.cat4list,
-    }[num_cats]
-
-    clf = get_classifier(pten_mutations.vectorArray_scaled,
-                         catArray, num_cats, probs)
-
-    return PredictionPackage(clf, pten_mutations.scaler,
-                             includedScores, num_cats, catArray,
-                             pten_mutations.vectorArray_scaled)
 
 def get_category_name(class_, num_cats):
     """
@@ -160,8 +85,8 @@ def main():
     # parse arguments from command line
     args = parseArguments()
 
-    num_cats = args.cats        # which category split to use (2, 22, 3, 4)
-    variant = args.variant     # variant to test/predict
+    num_cats = args.cats         # which category split to use (2, 22, 3, 4)
+    variant = args.variant       # variant to test/predict
     make_new_pack = args.mkpack  # whether to recollect and refit the data
     probs = args.probs
 
@@ -178,9 +103,10 @@ def main():
         wwwString = ""
 
     if make_new_pack:  # new pack is requested
-        pred_pack = get_new_pred_pack(num_cats, probs)
+        pred_pack = PredictionPackage(num_cats, probs)
         joblib.dump(
-            pred_pack, "/opt/predict/datafiles/joblib{}/defaultPack{}{}.jl".format(
+            pred_pack,
+            "/opt/predict/datafiles/joblib{}/defaultPack{}{}.jl".format(
                 wwwString, num_cats, prob[probs]
             )
         )

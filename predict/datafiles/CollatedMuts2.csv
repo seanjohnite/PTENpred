@@ -1,0 +1,677 @@
+Codon,Mutation,OrigAA,MutAA,Count,AvgsampleMutCount,type
+1,M1T,M,T,4,2.5,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma
+1,M1K,M,K,1,1,Central nervous system_Glioma
+2,T2I,T,I,1,1,Soft tissue_Malignant melanoma of soft parts-clear cell sarcoma
+3,A3D,A,D,2,1,Large intestine_Carcinoma Large intestine_Carcinoma
+3,A3S,A,S,1,2,Endometrium_Other
+3,A3V,A,V,1,6,Large intestine_Carcinoma
+5,I5L,I,L,1,1,Central nervous system_Glioma
+5,I5V,I,V,1,2,Large intestine_Carcinoma
+6,K6I,K,I,1,1,Central nervous system_Glioma
+6,K6N,K,N,2,2,Endometrium_Carcinoma Oesophagus_Carcinoma
+6,K6E,K,E,1,3,Stomach_Carcinoma
+6,K6R,K,R,2,3,Large intestine_Carcinoma Vulva_In situ neoplasm
+7,E7G,E,G,1,3,Large intestine_Carcinoma
+8,I8T,I,T,1,1,Skin_Malignant melanoma
+10,S10N,S,N,3,1.333333333,Lung_Carcinoma Haematopoietic and lymphoid_Lymphoid neoplasm Endometrium_Carcinoma
+10,S10I,S,I,1,4,Large intestine_Carcinoma
+10,S10R,S,R,2,1,Breast_Carcinoma Central nervous system_Glioma
+10,S10G,S,G,,,NULL
+11,R11K,R,K,1,4,Endometrium_Carcinoma
+13,K13Q,K,Q,1,1,Endometrium_Carcinoma
+13,K13N,K,N,1,2,Stomach_Adenocarcinoma
+13,K13E,K,E,2,1.5,Central nervous system_Glioma Endometrium_Carcinoma
+14,R14M,R,M,1,2,Large intestine_Carcinoma
+14,R14G,R,G,6,2.166666667,Large intestine_Carcinoma Large intestine_Carcinoma Kidney_Carcinoma Haematopoietic and lymphoid_Lymphoid neoplasm Vulva_In situ neoplasm Large intestine_Carcinoma
+14,R14S,R,S,1,1,Upper aerodigestive tract_Carcinoma
+15,R15I,R,I,4,1.75,Endometrium_Carcinoma Endometrium_Carcinoma Central nervous system_Glioma Endometrium_Carcinoma
+15,R15K,R,K,4,2,Large intestine_Carcinoma Soft tissue_Leiomyosarcoma Skin_Malignant melanoma Ovary_Carcinoma
+15,R15G,R,G,2,4,Large intestine_Carcinoma Haematopoietic and lymphoid_Lymphoid neoplasm
+15,,R,S,3,1,PHTS
+16,Y16C,Y,C,2,1.5,Central nervous system_Glioma Haematopoietic and lymphoid_Lymphoid neoplasm
+17,Q17P,Q,P,1,1,Central nervous system_Glioma
+18,E18G,E,G,1,2,Large intestine_Carcinoma
+19,D19N,D,N,1,1,Skin_Malignant melanoma
+19,D19G,D,G,1,4,Large intestine_Carcinoma
+19,D19E,D,E,1,1,NULL
+20,G20R,G,R,1,1,Large intestine_Carcinoma
+20,G20E,G,E,1,1,Endometrium_Carcinoma
+21,F21L,F,L,1,2,Large intestine_Carcinoma
+21,F21S,F,S,2,2,Large intestine_Carcinoma Endometrium_Carcinoma
+23,L23F,L,F,3,1,Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma
+23,L23V,L,V,1,1,Endometrium_Carcinoma
+24,D24E,D,E,3,1,Central nervous system_Glioma Central nervous system_Glioma Stomach_Carcinoma
+24,D24N,D,N,3,1,Large intestine_Carcinoma Endometrium_Carcinoma Breast_Carcinoma
+24,D24V,D,V,1,3,Stomach_Carcinoma
+24,,D,Y,5,1.6,PHTS
+24,,D,G,6,1.666666667,PHTS
+24,,D,H,2,1,PHTS
+25,L25S,L,S,1,1,Large intestine_Carcinoma
+25,,L,F,3,1,PHTS
+26,T26I,T,I,2,2,Large intestine_Carcinoma Large intestine_Carcinoma
+26,T26A,T,A,1,2,Large intestine_Carcinoma
+26,,T,P,2,1.5,PHTS
+27,Y27S,Y,S,1,1,Central nervous system_Glioma
+27,Y27D,Y,D,4,1.5,Breast_Carcinoma Endometrium_Carcinoma Central nervous system_Glioma Stomach_Carcinoma
+27,Y27C,Y,C,5,2,Large intestine_Carcinoma Central nervous system_Glioma Endometrium_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma
+27,Y27H,Y,H,1,2,Large intestine_Carcinoma
+27,Y27N,Y,N,3,1,Large intestine_Carcinoma Central nervous system_Glioma Central nervous system_Glioma
+28,I28M,I,M,2,2.5,Large intestine_Carcinoma Large intestine_Carcinoma
+28,I28S,I,S,1,1,Stomach_Carcinoma
+29,Y29S,Y,S,1,1,Skin_Malignant melanoma
+30,P30Q,P,Q,1,2,Endometrium_Carcinoma
+31,N31K,N,K,1,3,Endometrium_Carcinoma
+31,N31H,N,H,1,2,Large intestine_Carcinoma
+32,,I,N,,,PHTS
+33,I33S,I,S,2,1.5,Endometrium_Carcinoma Endometrium_Carcinoma
+34,A34V,A,V,1,2,Endometrium_Carcinoma
+34,,A,D,1,2,PHTS
+35,M35I,M,I,3,1,Kidney_Carcinoma Lung_Carcinoma Central nervous system_Glioma
+35,M35L,M,L,1,1,Breast_Carcinoma
+35,M35R,M,R,1,1,PHTS
+35,M35T,M,T,1,1,PHTS
+35,,M,V,4,1,PHTS
+36,G36E,G,E,5,1.4,Endometrium_Carcinoma Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma Stomach_Carcinoma
+36,G36V,G,V,2,1,Central nervous system_Glioma Central nervous system_Glioma
+36,,G,R,6,1,PHTS
+37,F37L,F,L,1,2,Large intestine_Carcinoma
+37,F37S,F,S,2,2,Vulva_In situ neoplasm Vulva_Carcinoma
+38,P38S,P,S,12,1.083333333,Skin_Malignant melanoma Skin_Malignant melanoma NS_Malignant melanoma Skin_Malignant melanoma Skin_Malignant melanoma Skin_Malignant melanoma Skin_Malignant melanoma Skin_Malignant melanoma Skin_Malignant melanoma Skin_Malignant melanoma Skin_Malignant melanoma Large intestine_Carcinoma
+38,P38R,P,R,1,2,Endometrium_Carcinoma
+38,P38L,P,L,2,1,Skin_Malignant melanoma Skin_Malignant melanoma
+39,A39V,A,V,1,4,Stomach_Carcinoma
+39,A39T,A,T,1,2,Central nervous system_Glioma
+39,,A,P,,,PHTS
+42,L42V,L,V,1,1,Central nervous system_Glioma
+42,L42R,L,R,6,1,Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma
+42,L42P,L,P,1,1,Central nervous system_Glioma
+43,,E,K,,,PHTS
+44,,G,D,4,1,Autism or developmental delay
+45,V45I,V,I,1,3,Large intestine_Carcinoma
+45,V45A,V,A,1,1,Oesophagus_Carcinoma
+46,Y46D,Y,D,1,1,Lung_Carcinoma
+46,Y46C,Y,C,2,3,Large intestine_Carcinoma Large intestine_Carcinoma
+46,Y46H,Y,H,3,2.666666667,Central nervous system_Glioma Endometrium_Carcinoma Endometrium_Carcinoma
+47,R47M,R,M,3,2.333333333,Large intestine_Carcinoma Endometrium_Carcinoma Stomach_Carcinoma
+47,R47G,R,G,4,1.75,Large intestine_Carcinoma Large intestine_Carcinoma Central nervous system_Glioma Endometrium_Carcinoma
+48,N48D,N,D,2,1.5,Large intestine_Carcinoma Central nervous system_Glioma
+48,N48I,N,I,2,1.5,Breast_Carcinoma Urinary tract_Carcinoma
+48,,N,K,,,PHTS
+49,N49I,N,I,1,1,Central nervous system_Glioma
+49,N49T,N,T,1,1,Central nervous system_Glioma
+52,D52N,D,N,1,1,Skin_Malignant melanoma
+52,,D,G,2,3,PHTS
+53,V53G,V,G,1,1,Kidney_Carcinoma
+53,V53I,V,I,1,3,Large intestine_Carcinoma
+53,V53A,V,A,,,NULL
+54,V54A,V,A,1,4,Large intestine_Carcinoma
+54,V54E,V,E,1,5,Large intestine_Carcinoma
+54,V54L,V,L,1,1,Endometrium_Carcinoma
+55,R55S,R,S,1,1,Breast_Carcinoma
+55,R55G,R,G,3,1.333333333,Large intestine_Carcinoma Large intestine_Carcinoma Prostate_Carcinoma
+55,R55M,R,M,1,4,Large intestine_Carcinoma
+56,F56C,F,C,1,2,Endometrium_Carcinoma
+56,F56V,F,V,,,NULL
+57,L57S,L,S,2,1,Central nervous system_Glioma Central nervous system_Glioma
+57,L57W,L,W,3,1,Central nervous system_Glioma Haematopoietic and lymphoid_Lymphoid neoplasm Central nervous system_Glioma
+58,D58Y,D,Y,1,1,Central nervous system_Glioma
+58,D58N,D,N,1,2,Endometrium_Carcinoma
+59,S59P,S,P,1,1,Breast_Carcinoma
+59,S59L,S,L,2,1,Lung_Carcinoma Large intestine_Carcinoma
+60,K60T,K,T,1,1,Large intestine_Carcinoma
+61,H61Q,H,Q,1,2,Central nervous system_Glioma
+61,H61P,H,P,1,1,Central nervous system_Glioma
+61,H61L,H,L,1,1,Haematopoietic and lymphoid_Lymphoid neoplasm
+61,,H,D,,,Autism or developmental delay
+61,,H,R,11,1,PHTS
+61,,H,Y,1,1,PHTS
+62,K62I,K,I,1,1,Stomach_Carcinoma
+62,K62R,K,R,1,2,Large intestine_Carcinoma
+62,K62N,K,N,1,1,Endometrium_Carcinoma
+63,N63Y,N,Y,1,1,Large intestine_Carcinoma
+65,Y65N,Y,N,1,1,Endometrium_Carcinoma
+65,Y65D,Y,D,1,1,Central nervous system_Glioma
+65,Y65C,Y,C,1,2,Large intestine_Carcinoma
+66,K66N,K,N,5,1.8,Central nervous system_Glioma Endometrium_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma Oesophagus_Carcinoma
+66,K66E,K,E,2,2,Endometrium_Carcinoma Large intestine_Carcinoma
+66,K66Q,K,Q,1,1,Endometrium_Carcinoma
+67,I67K,I,K,2,1,Stomach_Carcinoma Liver_Carcinoma
+67,I67T,I,T,1,3,Endometrium_Carcinoma
+67,,I,R,1,1,PHTS
+68,Y68N,Y,N,2,1,Large intestine_Carcinoma Endometrium_Carcinoma
+68,,Y,D,,,Autism or developmental delay
+68,,Y,H,9,1.222222222,PHTS
+68,,Y,C,4,2.25,PHTS
+70,L70I,L,I,1,4,Endometrium_Carcinoma
+70,L70H,L,H,1,1,Central nervous system_Glioma
+70,L70F,L,F,1,2,Endometrium_Carcinoma
+70,,L,V,,,Autism or developmental delay
+70,,L,P,1,1,PHTS
+71,C71Y,C,Y,4,1.25,Central nervous system_Glioma Central nervous system_Glioma Endometrium_Carcinoma Endometrium_Carcinoma
+71,C71W,C,W,2,1.5,Skin_Malignant melanoma NS_Malignant melanoma
+72,A72V,A,V,1,1,Liver_Carcinoma
+73,E73K,E,K,1,2,Large intestine_Carcinoma
+73,E73V,E,V,1,2,Endometrium_Carcinoma
+74,R74I,R,I,1,2,Large intestine_Carcinoma
+74,R74T,R,T,1,1,Central nervous system_Glioma
+75,H75N,H,N,1,2,Central nervous system_Glioma
+76,Y76C,Y,C,1,2,Large intestine_Carcinoma
+78,T78A,T,A,1,1,Central nervous system_Glioma
+79,A79N,A,N,,,NULL
+79,,A,T,3,2,PHTS
+80,K80E,K,E,1,1,Central nervous system_Glioma
+80,K80N,K,N,1,1,Central nervous system_Glioma
+81,F81L,F,L,3,2,Large intestine_Carcinoma Large intestine_Carcinoma Endometrium_Carcinoma
+81,F81C,F,C,3,1.333333333,Endometrium_Carcinoma Large intestine_Carcinoma Ovary_Carcinoma
+82,N82T,N,T,2,1,Stomach_Carcinoma Stomach_Carcinoma
+84,R84G,R,G,1,1,Vulva_Carcinoma
+85,V85F,V,F,1,1,Central nervous system_Glioma
+85,V85A,V,A,5,1.4,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma
+85,V85G,V,G,1,2,Large intestine_Carcinoma
+86,A86P,A,P,2,1,Large intestine_Carcinoma Large intestine_Carcinoma
+86,A86S,A,S,2,4,Large intestine_Carcinoma Large intestine_Carcinoma
+86,A86V,A,V,1,2,Endometrium_Carcinoma
+87,Q87R,Q,R,1,2,Large intestine_Carcinoma
+87,Q87P,Q,P,1,3,Endometrium_Carcinoma
+88,Y88C,Y,C,11,1.545454545,Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma Upper aerodigestive tract_Carcinoma Breast_Carcinoma Kidney_Carcinoma Central nervous system_Glioma Endometrium_Carcinoma Endometrium_Carcinoma Large intestine_Carcinoma Endometrium_Carcinoma
+88,Y88N,Y,N,1,1,Ovary_Carcinoma
+88,Y88H,Y,H,2,1,Eye_Malignant melanoma Central nervous system_Glioma
+88,Y88S,Y,S,1,1,Central nervous system_Glioma
+89,p89a,p,a,,,NULL
+90,F90C,F,C,1,3,Large intestine_Carcinoma
+90,F90S,F,S,2,1.5,Endometrium_Carcinoma Central nervous system_Glioma
+90,f90a,f,a,,,NULL
+90,F90L,F,L,2,1,NULL
+91,E91Q,E,Q,2,1,Prostate_Carcinoma Stomach_Carcinoma
+91,E91G,E,G,2,2,Large intestine_Carcinoma Haematopoietic and lymphoid_Haematopoietic neoplasm
+91,E91A,E,A,1,1,NULL
+92,D92V,D,V,2,1,Endometrium_Carcinoma Endometrium_Carcinoma
+92,D92Y,D,Y,1,2,Endometrium_Carcinoma
+92,D92G,D,G,8,2.375,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Endometrium_Carcinoma Upper aerodigestive tract_Carcinoma Endometrium_Carcinoma
+92,D92A,D,A,1,1,Central nervous system_Glioma
+92,D92H,D,H,3,2,Breast_Carcinoma Breast_Carcinoma Lung_Carcinoma
+92,D92N,D,N,,,NULL
+92,,D,E,9,1.222222222,PHTS
+93,H93D,H,D,1,1,Endometrium_Carcinoma
+93,H93Q,H,Q,3,1,Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma
+93,H93L,H,L,1,1,Breast_Carcinoma
+93,,H,R,,,Autism or developmental delay
+93,,H,Y,6,1,PHTS
+94,N94S,N,S,2,3,Large intestine_Carcinoma Large intestine_Carcinoma
+94,N94Y,N,Y,1,1,Endometrium_Carcinoma
+94,N94I,N,I,1,2,Upper aerodigestive tract_Carcinoma
+94,N94A,N,A,,,NULL
+95,P95S,P,S,4,1.5,Central nervous system_Glioma Eye_Malignant melanoma Endometrium_Carcinoma Prostate_Carcinoma
+95,P95A,P,A,,,NULL
+95,,P,L,6,1.333333333,PHTS
+96,P96T,P,T,1,2,Endometrium_Carcinoma
+96,P96S,P,S,3,2.333333333,Large intestine_Carcinoma Central nervous system_Glioma Lung_Carcinoma
+96,P96L,P,L,5,2,Central nervous system_Glioma Large intestine_Carcinoma Large intestine_Carcinoma Central nervous system_Glioma Central nervous system_Glioma
+96,P96A,P,A,1,12,NULL
+96,,P,Q,1,1,PHTS
+96,,P,R,,,PHTS
+97,Q97A,Q,A,,,NULL
+98,L98A,L,A,,,NULL
+99,E99K,E,K,1,4,Stomach_Carcinoma
+101,I101M,I,M,1,1,Kidney_Carcinoma
+101,I101N,I,N,1,2,Prostate_Carcinoma
+101,,I,T,8,1,PHTS
+103,P103S,P,S,2,1.5,Large intestine_Carcinoma Large intestine_Carcinoma
+105,C105S,C,S,3,2,Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma
+105,C105F,C,F,6,1.333333333,Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma
+105,C105G,C,G,2,1,Central nervous system_Glioma Skin_Malignant melanoma
+105,C105R,C,R,2,1,Endometrium_Carcinoma Central nervous system_Glioma
+105,C105W,C,W,4,1,Breast_Carcinoma Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma
+105,,C,Y,4,1,PHTS
+107,D107H,D,H,1,1,Central nervous system_Glioma
+107,D107N,D,N,2,1,Breast_Carcinoma Lung_Carcinoma
+107,D107A,D,A,1,1,Central nervous system_Glioma
+107,D107Y,D,Y,5,1,Central nervous system_Glioma Endometrium_Carcinoma Central nervous system_Glioma Central nervous system_Glioma Endometrium_Carcinoma
+108,L108R,L,R,3,1,Breast_Carcinoma Breast_Carcinoma Pancreas_Carcinoid-endocrine tumour
+108,,L,P,4,2.75,PHTS
+109,D109N,D,N,2,1,Central nervous system_Glioma Central nervous system_Glioma
+110,Q110R,Q,R,2,2,Large intestine_Carcinoma Large intestine_Carcinoma
+110,Q110K,Q,K,1,3,Large intestine_Carcinoma
+111,W111R,W,R,3,1.666666667,PHTS
+111,W111L,W,L,,,NULL
+112,L112Q,L,Q,2,2,NS_Malignant melanoma Skin_Malignant melanoma
+112,L112P,L,P,3,2,PHTS
+112,L112V,L,V,5,1.2,PHTS
+112,L112I,L,I,1,6,Large intestine_Carcinoma
+113,S113R,S,R,1,1,Endometrium_Hyperplasia
+113,S113G,S,G,2,3,Large intestine_Carcinoma Large intestine_Carcinoma
+114,E114G,E,G,5,2.6,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma
+115,D115N,D,N,1,1,Endometrium_Carcinoma
+116,D116G,D,G,7,2,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Thyroid_Carcinoma
+117,N117S,N,S,1,1,Lung_Carcinoma
+118,H118R,H,R,2,1,Haematopoietic and lymphoid_Haematopoietic neoplasm Thyroid_Carcinoma
+118,H118L,H,L,2,1,Skin_Malignant melanoma Skin_Malignant melanoma
+118,,H,P,,,Autism or developmental delay
+119,V119I,V,I,3,2,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma
+119,V119F,V,F,2,1,Central nervous system_Glioma Prostate_Carcinoma
+119,V119D,V,D,1,2,Endometrium_Carcinoma
+119,V119A,V,A,3,2.666666667,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma
+119,,V,L,,,PHTS
+120,A120T,A,T,2,1,Large intestine_Carcinoma Large intestine_Carcinoma
+120,,A,E,,,PHTS
+121,A121P,A,P,3,1,Breast_Carcinoma Central nervous system_Glioma Central nervous system_Glioma
+121,A121T,A,T,2,1,Central nervous system_Glioma Lung_Carcinoma
+121,A121E,A,E,2,2,Upper aerodigestive tract_Carcinoma Upper aerodigestive tract_Carcinoma
+121,A121V,A,V,,,NULL
+122,I122N,I,N,1,3,Endometrium_Carcinoma
+122,I122S,I,S,1,1,Central nervous system_Glioma
+122,I122T,I,T,3,1.666666667,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma
+122,I122V,I,V,,,NULL
+123,H123R,H,R,2,4,PHTS
+123,H123Y,H,Y,7,1.285714286,Ovary_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma Central nervous system_Glioma Lung_Carcinoma
+123,H123D,H,D,2,1.5,PHTS
+123,H123L,H,L,1,1,Kidney_Carcinoma
+123,,H,Q,,,Autism or developmental delay
+124,C124G,C,G,1,1,Breast_Carcinoma
+124,C124S,C,S,8,1.375,PHTS
+124,C124R,C,R,4,3.5,PHTS
+124,C124Y,C,Y,1,1,PHTS
+124,,C,W,,,PHTS
+125,K125T,K,T,1,3,Large intestine_Carcinoma
+125,K125N,K,N,3,1,Kidney_Carcinoma Central nervous system_Glioma Lung_Carcinoma
+125,K125E,K,E,2,1.5,Large intestine_Carcinoma Endometrium_Carcinoma
+125,K125R,K,R,,,NULL
+126,A126V,A,V,3,1.666666667,Ovary_Carcinoma Central nervous system_Glioma Endometrium_Carcinoma
+126,A126T,A,T,6,1.5,Endometrium_Carcinoma Central nervous system_Glioma Central nervous system_Glioma Endometrium_Carcinoma Central nervous system_Glioma Endometrium_Carcinoma
+126,A126S,A,S,3,2,Endometrium_Carcinoma Large intestine_Carcinoma Endometrium_Carcinoma
+126,A126P,A,P,2,1.5,PHTS
+126,A126D,A,D,4,1,Endometrium_Carcinoma Breast_Carcinoma Breast_Hyperplasia Stomach_Carcinoma
+127,G127E,G,E,5,1,Skin_Malignant melanoma Skin_Malignant melanoma Skin_Malignant melanoma Skin_Malignant melanoma Skin_Malignant melanoma
+127,G127R,G,R,5,4.2,Endometrium_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma Stomach_Carcinoma Endometrium_Carcinoma
+127,G127V,G,V,2,1.5,Endometrium_Carcinoma Endometrium_Carcinoma
+128,K128N,K,N,9,1.111111111,Central nervous system_Glioma Endometrium_Carcinoma Skin_Malignant melanoma Skin_Malignant melanoma Breast_Carcinoma Prostate_Carcinoma Skin_Malignant melanoma Lung_Carcinoma Endometrium_Carcinoma
+128,K128E,K,E,1,2,PHTS
+128,K128R,K,R,6,2.5,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma
+128,K128Q,K,Q,2,2,Endometrium_Carcinoma Lung_Carcinoma
+129,G129E,G,E,3,1.333333333,PHTS
+129,G129V,G,V,3,1,Endometrium_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma
+129,G129R,G,R,7,1.285714286,Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma Thyroid_Carcinoma Central nervous system_Glioma Prostate_Carcinoma Large intestine_Carcinoma
+129,G129A,G,A,,,NULL
+130,R130Q,R,Q,97,1.711340206,PHTS
+130,R130P,R,P,14,2,Central nervous system_Glioma Breast_Carcinoma Liver_Carcinoma Endometrium_Carcinoma Breast_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma Breast_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma Skin_Malignant melanoma
+130,R130L,R,L,18,1.888888889,PHTS
+130,R130G,R,G,116,1.5,PHTS
+131,T131A,T,A,2,1,Large intestine_Carcinoma Central nervous system_Glioma
+131,T131I,T,I,1,1,Ovary_Carcinoma
+131,T131N,T,N,1,1,Central nervous system_Glioma
+131,T131P,T,P,1,1,Ovary_Carcinoma
+131,T131S,T,S,,,NULL
+132,G132V,G,V,5,1,PHTS
+132,G132R,G,R,1,1,Endometrium_Carcinoma
+132,G132S,G,S,3,1.333333333,Central nervous system_Glioma Central nervous system_Glioma Endometrium_Carcinoma
+132,G132D,G,D,8,1.25,PHTS
+132,G132C,G,C,2,1.5,Large intestine_Carcinoma Skin_Malignant melanoma
+132,,G,A,,,PHTS
+133,V133I,V,I,2,1,Endometrium_Carcinoma Endometrium_Carcinoma
+134,M134L,M,L,2,1.5,Endometrium_Carcinoma Prostate_Carcinoma
+134,M134I,M,I,3,2.666666667,Endometrium_Carcinoma Large intestine_Carcinoma Endometrium_Carcinoma
+134,M134T,M,T,1,1,Autism or developmental delay
+134,M134V,M,V,1,6,Large intestine_Carcinoma
+134,M134R,M,R,1,2,PHTS
+135,I135V,I,V,2,1.5,PHTS
+135,I135T,I,T,1,3,Large intestine_Carcinoma
+135,I135K,I,K,4,1,PHTS
+135,I135M,I,M,2,2,Large intestine_Carcinoma Endometrium_Carcinoma
+135,,I,R,,,PHTS
+136,C136F,C,F,6,2,Large intestine_Carcinoma Meninges_Meningioma Central nervous system_Glioma Endometrium_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma
+136,C136R,C,R,8,1.25,PHTS
+136,C136Y,C,Y,12,1.583333333,PHTS
+137,A137T,A,T,1,2,Large intestine_Carcinoma
+137,A137V,A,V,1,1,Upper aerodigestive tract_Carcinoma
+138,Y138D,Y,D,2,2,Large intestine_Carcinoma Ovary_Carcinoma
+138,Y138C,Y,C,2,2,Endometrium_Carcinoma Lung_Carcinoma
+139,L139V,L,V,1,3,Endometrium_Carcinoma
+139,L139F,L,F,2,2,Central nervous system_Glioma Large intestine_Carcinoma
+140,L140F,L,F,1,3,Endometrium_Carcinoma
+140,L140S,L,S,1,10,Large intestine_Carcinoma
+141,H141R,H,R,2,3,Large intestine_Carcinoma Large intestine_Carcinoma
+141,H141Y,H,Y,1,1,Central nervous system_Glioma
+141,H141N,H,N,2,3.5,Large intestine_Carcinoma Large intestine_Carcinoma
+142,R142L,R,L,1,1,Large intestine_Carcinoma
+142,R142Q,R,Q,5,1.6,Thyroid_Carcinoma Ovary_Carcinoma Thyroid_Carcinoma Thyroid_Carcinoma Large intestine_Carcinoma
+142,R142W,R,W,10,1.6,Large intestine_Carcinoma Large intestine_Carcinoma Endometrium_Carcinoma Central nervous system_Glioma Cervix_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma Large intestine_Carcinoma
+144,K144I,K,I,1,1,Liver_Carcinoma
+144,K144Q,K,Q,2,3,Large intestine_Carcinoma Salivary gland_Carcinoma
+144,K144T,K,T,2,3.5,Endometrium_Carcinoma Endometrium_Carcinoma
+145,F145I,F,I,1,1,Endometrium_Carcinoma
+146,L146V,L,V,1,2,Endometrium_Carcinoma
+147,K147M,K,M,1,6,Large intestine_Carcinoma
+147,K147T,K,T,1,10,Large intestine_Carcinoma
+147,K147R,K,R,1,1,Thyroid_Carcinoma
+148,A148E,A,E,1,1,Thyroid_Carcinoma
+148,A148S,A,S,1,2,Large intestine_Carcinoma
+148,A148T,A,T,2,1,Central nervous system_Glioma Central nervous system_Glioma
+149,Q149R,Q,R,1,2,Endometrium_Carcinoma
+150,E150G,E,G,6,3.5,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Prostate_Carcinoma
+150,E150A,E,A,1,1,Large intestine_Carcinoma
+150,E150Q,E,Q,1,1,Large intestine_Carcinoma
+150,E150D,E,D,1,1,Endometrium_Carcinoma
+151,A151D,A,D,1,3,Thyroid_Carcinoma
+151,A151T,A,T,5,1,Endometrium_Carcinoma Endometrium_Other Endometrium_Other Endometrium_Other Endometrium_Other
+152,L152R,L,R,1,2,Endometrium_Carcinoma
+152,L152I,L,I,1,5,Large intestine_Carcinoma
+152,L152P,L,P,2,1.5,PHTS
+152,L152V,L,V,1,1,Central nervous system_Glioma
+153,D153E,D,E,1,2,Endometrium_Carcinoma
+153,D153N,D,N,1,1,Large intestine_Carcinoma
+153,D153Y,D,Y,2,1.5,Large intestine_Carcinoma Kidney_Carcinoma
+153,D153H,D,H,,,NULL
+154,F154L,F,L,3,2,Endometrium_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma
+154,F154C,F,C,1,3,Endometrium_Carcinoma
+154,F154S,F,S,1,1,Thyroid_Carcinoma
+154,F154V,F,V,1,1,Large intestine_Carcinoma
+155,Y155C,Y,C,10,1.3,PHTS
+155,Y155H,Y,H,4,1.25,PHTS
+155,Y155N,Y,N,1,2,Ovary_Carcinoma
+156,G156R,G,R,2,3,Large intestine_Carcinoma Central nervous system_Glioma
+157,E157K,E,K,1,4,Large intestine_Carcinoma
+157,,E,G,,,Autism or developmental delay
+158,,V,L,,,PHTS
+159,R159S,R,S,8,1.375,Haematopoietic and lymphoid_Lymphoid neoplasm Large intestine_Carcinoma Large intestine_Carcinoma Central nervous system_Glioma Haematopoietic and lymphoid_Lymphoid neoplasm Haematopoietic and lymphoid_Lymphoid neoplasm Central nervous system_Glioma Endometrium_Carcinoma
+159,R159K,R,K,5,1.2,Skin_Malignant melanoma Central nervous system_Glioma Thyroid_Carcinoma Central nervous system_Glioma Central nervous system_Glioma
+159,,R,G,,,PHTS
+159,,R,T,,,PHTS
+160,T160I,T,I,1,1,Eye_Malignant melanoma
+160,T160A,T,A,1,2,Large intestine_Carcinoma
+160,T160S,T,S,1,2,Breast_Carcinoma
+161,R161G,R,G,1,2,NULL
+161,R161I,R,I,2,1,Breast_Carcinoma Breast_Hyperplasia
+161,R161K,R,K,2,1,Breast_Carcinoma Breast_Hyperplasia
+162,D162G,D,G,3,1,Large intestine_Carcinoma Large intestine_Carcinoma Thyroid_Carcinoma
+162,D162H,D,H,2,3,Large intestine_Carcinoma Haematopoietic and lymphoid_Lymphoid neoplasm
+162,D162V,D,V,3,2,Skin_Malignant melanoma Skin_Malignant melanoma Skin_Malignant melanoma
+162,,D,E,,,PHTS
+163,K163E,K,E,1,1,Large intestine_Carcinoma
+163,K163A,K,A,,,NULL
+164,K164N,K,N,1,4,Large intestine_Carcinoma
+164,K164E,K,E,1,4,Large intestine_Carcinoma
+164,K164R,K,R,3,2.666666667,Large intestine_Carcinoma Large intestine_Carcinoma Endometrium_Carcinoma
+164,k164a,k,a,,,NULL
+165,G165V,G,V,1,1,PHTS
+165,G165R,G,R,11,1.545454545,PHTS
+165,G165E,G,E,7,1.142857143,PHTS
+165,g165a,g,a,,,NULL
+166,V166I,V,I,1,2,NULL
+166,V166L,V,L,1,1,Haematopoietic and lymphoid_Lymphoid neoplasm
+167,T167A,T,A,7,1.142857143,Haematopoietic and lymphoid_Lymphoid neoplasm Skin_Malignant melanoma Central nervous system_Glioma Skin_Malignant melanoma Skin_Malignant melanoma Skin_Malignant melanoma NS_Malignant melanoma
+167,T167I,T,I,1,1,Endometrium_Carcinoma
+167,T167P,T,P,1,1,Breast_Carcinoma
+167,T167S,T,S,1,1,Central nervous system_Glioma
+168,I168F,I,F,1,1,NULL
+168,I168A,I,A,,,NULL
+169,P169H,P,H,1,1,NULL
+169,P169A,P,A,,,NULL
+170,S170G,S,G,1,1,Central nervous system_Glioma
+170,S170N,S,N,8,1.125,Endometrium_Carcinoma Central nervous system_Glioma Biliary tract_Carcinoma Kidney_Carcinoma Endometrium_Carcinoma Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma
+170,S170I,S,I,3,1,PHTS
+170,s170a,s,a,,,NULL
+170,,S,R,,,PHTS
+171,Q171H,Q,H,1,1,Central nervous system_Glioma
+171,Q171K,Q,K,1,1,Lung_Carcinoma
+171,Q171E,Q,E,2,1,Central nervous system_Glioma Central nervous system_Glioma
+171,Q171P,Q,P,2,1,Central nervous system_Glioma Central nervous system_Glioma
+172,R172W,R,W,1,2,Large intestine_Carcinoma
+172,R172G,R,G,1,4,Large intestine_Carcinoma
+173,R173H,R,H,29,1.379310345,PHTS
+173,R173S,R,S,1,1,Eye_Malignant melanoma
+173,R173C,R,C,48,1.791666667,PHTS
+173,,R,P,,,PHTS
+174,Y174N,Y,N,1,1,Prostate_Carcinoma
+174,Y174D,Y,D,3,1.333333333,Skin_Malignant melanoma Endometrium_Carcinoma Endometrium_Carcinoma
+175,V175A,V,A,1,10,Large intestine_Carcinoma
+175,V175L,V,L,1,1,Ovary_Carcinoma
+176,,Y,C,,,Autism or developmental delay
+177,Y177H,Y,H,1,1,Lung_Carcinoma
+177,Y177C,Y,C,6,1,Liver_Carcinoma Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma Liver_Carcinoma
+177,Y177F,Y,F,2,3.5,Large intestine_Carcinoma Large intestine_Carcinoma
+177,Y177S,Y,S,1,1,Central nervous system_Glioma
+178,Y178F,Y,F,1,2,Large intestine_Carcinoma
+178,Y178C,Y,C,1,1,Central nervous system_Glioma
+179,S179I,S,I,1,1,Endometrium_Carcinoma
+180,Y180C,Y,C,1,4,Large intestine_Carcinoma
+180,Y180N,Y,N,1,3,Large intestine_Carcinoma
+181,,L,P,,,PHTS
+182,L182F,L,F,2,2.5,Large intestine_Carcinoma Pancreas_Carcinoid-endocrine tumour
+182,L182V,L,V,1,1,Skin_Malignant melanoma
+182,,L,S,,,PHTS
+183,K183N,K,N,1,2,Large intestine_Carcinoma
+184,N184I,N,I,1,1,Central nervous system_Glioma
+185,H185D,H,D,1,1,Pancreas_Carcinoma
+187,D187Y,D,Y,1,1,Large intestine_Carcinoma
+188,Y188S,Y,S,1,1,Stomach_Carcinoma
+188,,Y,H,,,PHTS
+189,R189K,R,K,2,1,Urinary tract_Carcinoma Urinary tract_Carcinoma
+190,P190L,P,L,1,3,Ovary_Carcinoma
+191,V191A,V,A,,,NULL
+192,A192T,A,T,1,1,Kidney_Carcinoma
+193,L193P,L,P,1,1,Central nervous system_Glioma
+197,K197R,K,R,1,2,Large intestine_Carcinoma
+198,M198K,M,K,2,1,Endometrium_Carcinoma Breast_Carcinoma
+198,M198V,M,V,1,3,Large intestine_Carcinoma
+202,T202I,T,I,1,2,Autism or developmental delay
+204,P204S,P,S,1,1,Central nervous system_Glioma
+204,P204T,P,T,2,1,Stomach_Carcinoma Stomach_Carcinoma
+204,P204Q,P,Q,1,1,Kidney_Other
+204,P204L,P,L,3,1,Large intestine_Carcinoma Central nervous system_Glioma Central nervous system_Glioma
+205,M205I,M,I,2,3,Large intestine_Carcinoma Upper aerodigestive tract_Carcinoma
+205,,M,V,,,PHTS
+211,C211Y,C,Y,1,1,Central nervous system_Glioma
+213,P213H,P,H,2,1.5,Central nervous system_Glioma Endometrium_Carcinoma
+213,P213S,P,S,1,1,Skin_Malignant melanoma
+213,P213R,P,R,1,1,Prostate_Carcinoma
+214,Q214R,Q,R,1,1,Large intestine_Carcinoma
+215,F215S,F,S,2,2.5,Endometrium_Carcinoma Breast_Carcinoma
+216,V216M,V,M,2,2,Large intestine_Carcinoma Endometrium_Carcinoma
+216,V216A,V,A,1,2,Large intestine_Carcinoma
+217,V217I,V,I,1,1,Skin_Malignant melanoma
+217,V217D,V,D,1,3,PHTS
+217,V217A,V,A,1,2,Large intestine_Carcinoma
+218,C218F,C,F,1,1,Large intestine_Carcinoma
+218,C218Y,C,Y,,,NULL
+219,Q219H,Q,H,1,2,Large intestine_Carcinoma
+222,V222A,V,A,4,3,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Salivary gland_Carcinoma
+222,V222M,V,M,1,1,Large intestine_Carcinoma
+225,Y225C,Y,C,1,1,Upper aerodigestive tract_Carcinoma
+226,S226F,S,F,1,1,Skin_Malignant melanoma
+227,S227F,S,F,1,2,Endometrium_Carcinoma
+227,S227P,S,P,2,3,Large intestine_Carcinoma Large intestine_Carcinoma
+228,N228P,N,P,,,NULL
+230,G230E,G,E,2,1,Central nervous system_Glioma Endometrium_Hyperplasia
+230,G230R,G,R,2,1.5,Thyroid_Carcinoma Salivary gland_Carcinoma
+232,T232A,T,A,1,1,Kidney_Carcinoma
+232,T232S,T,S,,,NULL
+234,R234Q,R,Q,1,1.5,PHTS
+234,R234W,R,W,4,2.25,Large intestine_Carcinoma Large intestine_Carcinoma Vulva_Carcinoma Vulva_Carcinoma
+234,R234L,R,L,1,4,Large intestine_Carcinoma
+235,E235G,E,G,1,2,Biliary tract_Carcinoma
+238,F238S,F,S,1,2,Large intestine_Carcinoma
+238,F238L,F,L,2,2.5,Large intestine_Carcinoma Central nervous system_Glioma
+238,F238Y,F,Y,,,NULL
+239,M239V,M,V,1,1,Kidney_Carcinoma
+239,M239R,M,R,1,1,Central nervous system_Glioma
+241,F241L,F,L,4,4,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Central nervous system_Glioma
+241,F241S,F,S,2,1.5,Autism or developmental delay
+242,E242K,E,K,1,1,Endometrium_Carcinoma
+242,E242G,E,G,1,1,Large intestine_Carcinoma
+243,F243L,F,L,1,1,Lung_Carcinoma
+243,F243S,F,S,1,1,Thyroid_Carcinoma
+244,P244H,P,H,1,1,Large intestine_Carcinoma
+244,P244S,P,S,1,1,Skin_Malignant melanoma
+244,P244R,P,R,2,1,Urinary tract_Carcinoma Urinary tract_Carcinoma
+246,P246L,P,L,12,1.583333333,PHTS
+247,L247F,L,F,1,2,Lung_Carcinoma
+248,P248L,P,L,1,2,Large intestine_Carcinoma
+248,P248H,P,H,1,2,Lung_Carcinoma
+249,V249E,V,E,1,1,Endometrium_Carcinoma
+251,G251S,G,S,1,10,Large intestine_Carcinoma
+251,G251D,G,D,3,1,Skin_Malignant melanoma Central nervous system_Glioma Skin_Malignant melanoma
+251,G251V,G,V,5,1,Haematopoietic and lymphoid_Haematopoietic neoplasm Genital tract_Germ cell tumour Skin_Malignant melanoma Endometrium_Carcinoma Oesophagus_Carcinoma
+251,G251C,G,C,4,1,Central nervous system_Glioma Central nervous system_Glioma Lung_Carcinoma Lung_Carcinoma
+251,G251A,G,A,1,1,Central nervous system_Glioma
+252,D252G,D,G,3,1,Autism or developmental delay
+252,D252Y,D,Y,6,1.333333333,Central nervous system_Glioma Large intestine_Carcinoma Endometrium_Carcinoma Upper aerodigestive tract_Carcinoma Central nervous system_Glioma Upper aerodigestive tract_Carcinoma
+252,D252V,D,V,1,1,Thyroid_Carcinoma
+253,I253N,I,N,4,1.25,Skin_Malignant melanoma Central nervous system_Glioma Prostate_Carcinoma Breast_Carcinoma
+253,I253T,I,T,2,2,Large intestine_Carcinoma Large intestine_Carcinoma
+254,K254E,K,E,2,2,Large intestine_Carcinoma Salivary gland_Carcinoma
+254,,K,T,,,PHTS
+255,V255G,V,G,1,3,Endometrium_Carcinoma
+255,V255A,V,A,2,4,Large intestine_Carcinoma Liver_Carcinoma
+256,E256Q,E,Q,1,2,Large intestine_Carcinoma
+256,E256K,E,K,2,1.5,Breast_Carcinoma Central nervous system_Glioma
+257,F257S,F,S,1,3,Large intestine_Carcinoma
+257,F257L,F,L,1,2,Central nervous system_Glioma
+258,F258L,F,L,1,2,Breast_Carcinoma
+258,F258Y,F,Y,1,2,Breast_Carcinoma
+260,k260a,k,a,,,NULL
+261,q261a,q,a,,,NULL
+262,n262a,n,a,,,NULL
+263,K263R,K,R,2,4,Large intestine_Carcinoma Large intestine_Carcinoma
+263,k263a,k,a,,,NULL
+264,M264R,M,R,1,1,Skin_Malignant melanoma
+264,m264a,m,a,,,NULL
+265,l265a,l,a,,,NULL
+266,k266a,k,a,,,NULL
+270,M270I,M,I,2,1.5,Central nervous system_Glioma Endometrium_Carcinoma
+270,M270T,M,T,1,3,Endometrium_Carcinoma
+271,F271S,F,S,4,1.25,Skin_Malignant melanoma Large intestine_Carcinoma Large intestine_Carcinoma Central nervous system_Glioma
+271,F271L,F,L,3,4.666666667,Large intestine_Carcinoma Large intestine_Carcinoma Biliary tract_Carcinoma
+271,F271I,F,I,1,1,Skin_Malignant melanoma
+272,H272Y,H,Y,2,1.5,Large intestine_Carcinoma Prostate_Carcinoma
+272,H272R,H,R,2,1.5,Skin_Malignant melanoma Endometrium_Carcinoma
+272,H272P,H,P,2,1,Haematopoietic and lymphoid_Lymphoid neoplasm Central nervous system_Glioma
+273,F273S,F,S,1,1,Breast_Carcinoma
+273,F273L,F,L,1,1,Large intestine_Carcinoma
+274,W274L,W,L,5,2.4,Autism or developmental delay
+274,W274R,W,R,1,1,Large intestine_Carcinoma
+274,W274G,W,G,3,1,Central nervous system_Glioma Ovary_Carcinoma Ovary_Carcinoma
+275,V275L,V,L,2,2.5,Large intestine_Carcinoma Endometrium_Carcinoma
+275,V275A,V,A,1,3,Endometrium_Carcinoma
+276,N276S,N,S,1,1,Autism or developmental delay
+276,N276K,N,K,2,2,Kidney_Carcinoma Large intestine_Carcinoma
+277,T277I,T,I,4,2,Large intestine_Carcinoma Central nervous system_Glioma Central nervous system_Glioma Central nervous system_Glioma
+277,T277S,T,S,1,2,Large intestine_Carcinoma
+277,T277A,T,A,2,1,Large intestine_Carcinoma Haematopoietic and lymphoid_Lymphoid neoplasm
+277,,T,R,,,PHTS
+284,E284K,E,K,1,2,Endometrium_Carcinoma
+284,E284G,E,G,7,3.714285714,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma
+286,T286N,T,N,,,NULL
+287,S287L,S,L,2,2,Large intestine_Carcinoma Large intestine_Carcinoma
+287,S287P,S,P,2,3,Large intestine_Carcinoma Large intestine_Carcinoma
+288,E288K,E,K,2,2.5,NULL
+288,E288D,E,D,,,NULL
+289,,K,E,,,PHTS
+291,E291G,E,G,2,2,Large intestine_Carcinoma Large intestine_Carcinoma
+291,E291K,E,K,3,2.333333333,Large intestine_Carcinoma Lung_Carcinoma Endometrium_Carcinoma
+293,G293V,G,V,1,2,Large intestine_Carcinoma
+293,G293R,G,R,1,4,Large intestine_Carcinoma
+294,S294N,S,N,1,1,Lung_Carcinoma
+296,C296V,C,V,,,NULL
+298,Q298R,Q,R,1,3,Large intestine_Carcinoma
+299,E299D,E,D,1,5,Large intestine_Carcinoma
+299,E299G,E,G,2,2.5,Large intestine_Carcinoma Large intestine_NS
+304,C304S,C,S,1,1,Central nervous system_Glioma
+304,C304R,C,R,1,3,Large intestine_Carcinoma
+304,C304G,C,G,1,1,Liver_Carcinoma
+304,C304F,C,F,,,NULL
+305,S305N,S,N,1,1,Lung_Carcinoma
+306,I306T,I,T,,,NULL
+307,E307K,E,K,4,1,Breast_Carcinoma Breast_Carcinoma Breast_Carcinoma Breast_Carcinoma
+307,E307G,E,G,2,2,Large intestine_Carcinoma Large intestine_Carcinoma
+308,R308C,R,C,2,1,Eye_Malignant melanoma Central nervous system_Glioma
+308,R308H,R,H,1,1,Large intestine_Carcinoma
+309,A309S,A,S,,,NULL
+310,D310G,D,G,1,1,Liver_Carcinoma
+314,E314K,E,K,1,1,Endometrium_Other
+317,V317I,V,I,,,NULL
+318,L318P,L,P,4,2.5,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Pancreas_Other
+318,L318F,L,F,1,3,Thyroid_Carcinoma
+320,L320V,L,V,1,3,Endometrium_Carcinoma
+320,L320S,L,S,1,7,Large intestine_Carcinoma
+322,K322E,K,E,1,1,Central nervous system_Glioma
+323,N323T,N,T,1,3,Endometrium_Carcinoma
+323,N323K,N,K,2,4,Large intestine_Carcinoma Large intestine_Carcinoma
+325,L325H,L,H,2,2,Large intestine_Carcinoma Large intestine_Carcinoma
+325,L325F,L,F,1,4,Large intestine_Carcinoma
+325,L325V,L,V,1,1,Upper aerodigestive tract_Carcinoma
+325,L325P,L,P,3,1.333333333,Large intestine_Carcinoma Endometrium_Carcinoma Biliary tract_Carcinoma
+325,L325R,L,R,2,1.5,Large intestine_Carcinoma Endometrium_Carcinoma
+326,D326G,D,G,3,2,Large intestine_Carcinoma Central nervous system_Glioma Prostate_Carcinoma
+326,D326Y,D,Y,1,5,Large intestine_Carcinoma
+326,,D,N,,,Autism or developmental delay
+328,a328v,a,v,,,NULL
+329,n329a,n,a,,,NULL
+331,D331H,D,H,1,1,Oesophagus_Carcinoma
+331,d331a,d,a,,,NULL
+331,d331g,d,g,,,NULL
+332,k332a,k,a,,,NULL
+333,a333v,a,v,,,NULL
+334,N334D,N,D,1,2,Large intestine_Carcinoma
+334,N334Y,N,Y,1,1,Soft tissue_Alveolar soft part sarcoma
+334,n334a,n,a,,,NULL
+335,R335G,R,G,1,3,Endometrium_Carcinoma
+335,R335Q,R,Q,1,6,Large intestine_Carcinoma
+335,r335a,r,a,,,NULL
+335,,R,L,,,PHTS
+336,Y336F,Y,F,1,4,Central nervous system_Glioma
+336,Y336C,Y,C,1,1,Large intestine_Carcinoma
+336,Y336H,Y,H,1,4,Large intestine_Carcinoma
+336,y336a,y,a,,,NULL
+337,F337L,F,L,1,1,Kidney_Carcinoma
+337,,F,S,,,PHTS
+338,S338F,S,F,1,2,Large intestine_Carcinoma
+338,S338T,S,T,1,3,Endometrium_Carcinoma
+338,s338a,s,a,,,NULL
+339,P339L,P,L,3,2.333333333,Lung_Carcinoma Large intestine_Carcinoma Skin_Malignant melanoma
+339,P339S,P,S,3,2,Large intestine_Carcinoma Thyroid_Carcinoma Large intestine_Carcinoma
+339,p339a,p,a,,,NULL
+341,F341C,F,C,1,3,Endometrium_Carcinoma
+341,F341V,F,V,6,2.166666667,Large intestine_Carcinoma Endometrium_Carcinoma Endometrium_Carcinoma Central nervous system_Glioma Large intestine_Carcinoma Large intestine_Carcinoma
+341,f341a,f,a,,,NULL
+342,K342N,K,N,2,1,Haematopoietic and lymphoid_Lymphoid neoplasm Endometrium_Carcinoma
+342,K342R,K,R,3,4,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma
+342,k342a,k,a,,,NULL
+343,V343G,V,G,1,2,Endometrium_Carcinoma
+343,,V,E,,,PHTS
+344,K344R,K,R,5,2.6,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Prostate_Carcinoma
+344,K344E,K,E,4,3.5,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma
+344,k344a,k,a,,,NULL
+345,L345Q,L,Q,2,1.5,Central nervous system_Glioma Kidney_Carcinoma
+345,L345P,L,P,1,3,Large intestine_Carcinoma
+345,l345a,l,a,,,NULL
+345,l345v,l,v,,,NULL
+346,Y346C,Y,C,1,1,Large intestine_Carcinoma
+346,Y346D,Y,D,1,3,Large intestine_Carcinoma
+346,Y346F,Y,F,,,NULL
+347,F347L,F,L,1,1,PHTS
+348,T348A,T,A,3,2.333333333,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma
+348,T348I,T,I,1,3,Prostate_Carcinoma
+348,T348K,T,K,1,4,Large intestine_Carcinoma
+352,E352G,E,G,11,4.454545455,Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma Large intestine_Carcinoma
+354,,P,Q,,,PHTS
+356,,N,D,,,PHTS
+357,P357S,P,S,2,1,Endometrium_Carcinoma Lung_Carcinoma
+364,S364P,S,P,1,4,Large intestine_Carcinoma
+364,S364C,S,C,2,1,Central nervous system_Glioma Central nervous system_Glioma
+365,V365E,V,E,1,5,Large intestine_Carcinoma
+365,V365I,V,I,1,2,Cervix_Carcinoma
+369,V369G,V,G,1,1,Prostate_Carcinoma
+369,V369A,V,A,1,1,Large intestine_Carcinoma
+373,E373K,E,K,1,1,Urinary tract_Carcinoma
+375,D375N,D,N,3,1,Large intestine_Carcinoma Central nervous system_Glioma Lung_Carcinoma
+375,D375G,D,G,1,4,Large intestine_Carcinoma
+382,T382A,T,A,1,2,Large intestine_Carcinoma
+382,T382S,T,S,1,3,Prostate_Carcinoma
+383,T383I,T,I,1,1,Soft tissue_Malignant melanoma of soft parts-clear cell sarcoma
+384,D384G,D,G,1,1,Cervix_Carcinoma
+384,D384N,D,N,1,1,Lung_Carcinoma
+397,H397Y,H,Y,2,1,Central nervous system_Glioma Stomach_Carcinoma
+397,H397R,H,R,2,3.5,Large intestine_Carcinoma Large intestine_Carcinoma
+397,H397Q,H,Q,1,4,Large intestine_Carcinoma
+398,T398S,T,S,1,3,NULL
+401,T401I,T,I,2,1,Soft tissue_Leiomyosarcoma Central nervous system_Glioma

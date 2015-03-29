@@ -1,7 +1,7 @@
 __author__ = 'sean'
 
 import numpy as np
-from outputScores import *
+from output_scores import *
 from sklearn import preprocessing
 from sklearn.grid_search import GridSearchCV
 from sklearn.metrics import f1_score, make_scorer
@@ -191,33 +191,33 @@ class PredictionPackage(object):
         """
         # make all score dictionaries
         score_vector = []
-        mapp_dict = makeMAPPdict()
+        mapp_dict = make_mapp_dict()
         sus_struc_dict = makeSuspectScoreDict(
             "/opt/predict/datafiles/SuspectStructure.csv"
         )
         sus_seq_dict = makeSuspectScoreDict(
             "/opt/predict/datafiles/SuspectSequence.csv"
         )
-        ss_and_asa_dict = makeSSandASAdict()
-        sub_ss_and_asa_dict = makeSubSS_ASAdict()
-        pph2_dict = makePPh2Dict()
+        ss_and_asa_dict = make_ss_and_asa_dict()
+        sub_ss_and_asa_dict = make_sub_ss_and_asa_dict()
+        pph2_dict = make_pph2_dict()
         varmod_dict = makeVarModDict()
 
         for score in self.included_scores:
             score_vector.append({
-                'mutMAPPscore': getMAPPscore(mapp_dict,
+                'mutMAPPscore': get_mapp_score(mapp_dict,
                                              codon, mut_res),
-                'wtMAPPscore': getMAPPscore(mapp_dict,
+                'wtMAPPscore': get_mapp_score(mapp_dict,
                                             codon, wt_res),
-                'pph2_prob': getPPh2_prob(pph2_dict, wt_res,
+                'pph2_prob': get_pph2_prob(pph2_dict, wt_res,
                                           codon, mut_res, 'pph2_prob'),
-                'pph2_FPR': getPPh2_prob(pph2_dict,
+                'pph2_FPR': get_pph2_prob(pph2_dict,
                                          wt_res, codon, mut_res, 'pph2_FPR'),
-                'pph2_TPR': getPPh2_prob(pph2_dict,
+                'pph2_TPR': get_pph2_prob(pph2_dict,
                                          wt_res, codon, mut_res, 'pph2_TPR'),
-                'pph2_FDR': getPPh2_prob(pph2_dict,
+                'pph2_FDR': get_pph2_prob(pph2_dict,
                                          wt_res, codon, mut_res, 'pph2_FDR'),
-                'pph2_dScore': getPPh2_prob(pph2_dict,
+                'pph2_dScore': get_pph2_prob(pph2_dict,
                                             wt_res, codon, mut_res, 'dScore'),
                 'SuspectScore': getSuspectScore(sus_struc_dict,
                                                 sus_seq_dict, codon, mut_res),
@@ -230,24 +230,24 @@ class PredictionPackage(object):
                 'VMconservation': getVarModScore(varmod_dict,
                                                  wt_res, codon, mut_res,
                                                  'Conservation'),
-                'ASA': getASAscore(codon, ss_and_asa_dict,
-                                   sub_ss_and_asa_dict),
-                'helix': getSSscore(codon, ss_and_asa_dict,
-                                    sub_ss_and_asa_dict, 'H'),
-                '310helix': getSSscore(codon, ss_and_asa_dict,
+                'ASA':      get_asa_score(codon, ss_and_asa_dict,
+                                        sub_ss_and_asa_dict),
+                'helix':    get_ss_score(codon, ss_and_asa_dict,
+                                       sub_ss_and_asa_dict, 'H'),
+                '310helix': get_ss_score(codon, ss_and_asa_dict,
                                        sub_ss_and_asa_dict, 'G'),
-                'strand': getSSscore(codon, ss_and_asa_dict,
-                                     sub_ss_and_asa_dict, 'E'),
-                'turn': getSSscore(codon, ss_and_asa_dict,
-                                   sub_ss_and_asa_dict, 'T'),
-                'bridge': getSSscore(codon, ss_and_asa_dict,
-                                     sub_ss_and_asa_dict, 'B'),
-                'coil': getSSscore(codon, ss_and_asa_dict,
-                                   sub_ss_and_asa_dict, 'C'),
-                'phi': getPhiscore(codon, ss_and_asa_dict,
-                                   sub_ss_and_asa_dict),
-                'psi': getPsiscore(codon, ss_and_asa_dict,
-                                   sub_ss_and_asa_dict),
+                'strand':   get_ss_score(codon, ss_and_asa_dict,
+                                       sub_ss_and_asa_dict, 'E'),
+                'turn':     get_ss_score(codon, ss_and_asa_dict,
+                                       sub_ss_and_asa_dict, 'T'),
+                'bridge':   get_ss_score(codon, ss_and_asa_dict,
+                                       sub_ss_and_asa_dict, 'B'),
+                'coil':     get_ss_score(codon, ss_and_asa_dict,
+                                       sub_ss_and_asa_dict, 'C'),
+                'phi':      get_phi_score(codon, ss_and_asa_dict,
+                                        sub_ss_and_asa_dict),
+                'psi':      get_psi_score(codon, ss_and_asa_dict,
+                                        sub_ss_and_asa_dict),
             }[score])
         return self.scaler.transform(np.array(score_vector))
 

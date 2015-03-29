@@ -28,7 +28,7 @@ optional arguments:
 
 import argparse
 from sklearn.externals import joblib
-from makeIndexVectors import *
+from mut_group_pred_pack import *
 import getpass
 
 

@@ -15,6 +15,8 @@ Score outputter. Stores scores in a list of dictionaries with these keys:
     'pph2_dScore',
     'SuspectScore',
     'VarmodScore',
+    'ProveanScore',
+    'SIFTscore',
     'ASA',
     'helix',
     '310helix',
@@ -121,9 +123,9 @@ def add_pph2_scores(mut_list):
         mut_dict["pph2_dScore"] = float(pph2_dict[variant]["dScore"])
     return mut_list
 
-def get_pph2_prob(pph2_dict, wtres, codon, mutres, scoreString):
+def get_pph2_prob(pph2_dict, wtres, codon, mutres, score_string):
     variant = "{}{}{}".format(wtres, codon, mutres)
-    return float(pph2_dict[variant][scoreString])
+    return float(pph2_dict[variant][score_string])
 
 def make_ss_and_asa_dict():
     with open("/opt/predict/datafiles/SSandASA.csv", "r") as f:
@@ -199,76 +201,95 @@ def add_ss_and_asa_scores(mut_list):
         mut_dict["psi"] = get_psi_score(codon, ss_and_asa_dict, spine_x_dict)
     return mut_list
 
-def makeSuspectScoreDict(filename):
+def make_suspect_score_dict(filename):
     with open(filename) as f:
         reader = csv.DictReader(f)
-        suspectDict = {}
+        suspect_dict = {}
         for row in reader:
             codon = int(row["codon"])
-            suspectDict[codon] = row
-    return suspectDict
+            suspect_dict[codon] = row
+    return suspect_dict
 
-def getSuspectScore(susStrDict, susSeqDict, codon, mutRes):
+def get_suspect_score(sus_str_dict, sus_seq_dict, codon, mut_res):
     try:
-        score = float(susStrDict[codon][mutRes])
+        score = float(sus_str_dict[codon][mut_res])
     except KeyError:
-        #logging.info("Codon " + str(codon) + " was not found in SuspectStructure dictionary")
-        score = float(susSeqDict[codon][mutRes])
+        score = float(sus_seq_dict[codon][mut_res])
     return score
 
-def addSuspectScores(mut_list):
-    susStrDict = makeSuspectScoreDict("/opt/predict/datafiles/SuspectStructure.csv")
-    susSeqDict = makeSuspectScoreDict("/opt/predict/datafiles/SuspectSequence.csv")
+def add_suspect_scores(mut_list):
+    sus_str_dict = make_suspect_score_dict(
+        "/opt/predict/datafiles/SuspectStructure.csv")
+    sus_seq_dict = make_suspect_score_dict(
+        "/opt/predict/datafiles/SuspectSequence.csv")
     for mut_dict in mut_list:
         codon = int(mut_dict["codon"])
         try:
-            mut_dict["SuspectScore"] = float(susStrDict[codon][mut_dict["mutres"]])
+            mut_dict["SuspectScore"] = \
+                float(sus_str_dict[codon][mut_dict["mutres"]])
         except KeyError:
-            mut_dict["SuspectScore"] = float(susSeqDict[codon][mut_dict["mutres"]])
+            mut_dict["SuspectScore"] = \
+                float(sus_seq_dict[codon][mut_dict["mutres"]])
     return mut_list
 
-def makeVarModDict():
+def make_var_mod_dict():
     with open("/opt/predict/datafiles/VarmodResults2.csv") as f:
-        varModDict = {}
+        var_mod_dict = {}
         reader = csv.DictReader(f)
         for row in reader:
             variant = row["Variant"]
-            varModDict[variant] = row
-    return varModDict
+            var_mod_dict[variant] = row
+    return var_mod_dict
 
-def getVarModScore(VarModDict, wtRes, codon, mutRes, scoreString):
-    variant = "{}{}{}".format(wtRes, codon, mutRes)
-    return float(VarModDict[variant][scoreString])
+def get_var_mod_score(VarModDict, wt_res, codon, mut_res, score_string):
+    variant = "{}{}{}".format(wt_res, codon, mut_res)
+    return float(VarModDict[variant][score_string])
 
 
-def addVarModScores(mut_list):
-    varModDict = makeVarModDict()
+def add_var_mod_scores(mut_list):
+    var_mod_dict = make_var_mod_dict()
     for mut_dict in mut_list:
-        variant = mut_dict["wtres"] + str(mut_dict["codon"]) + mut_dict["mutres"]
-        mut_dict["VarModScore"] = float(varModDict[variant]['VarMod Probability'])
-        mut_dict["VMinterface"] = float(varModDict[variant]['Interface'])
-        mut_dict["VMconservation"] = float(varModDict[variant]['Conservation'])
+        variant = mut_dict["wtres"] + str(mut_dict["codon"]) + \
+                  mut_dict["mutres"]
+        mut_dict["VarModScore"] = \
+            float(var_mod_dict[variant]['VarMod Probability'])
+        mut_dict["VMinterface"] = \
+            float(var_mod_dict[variant]['Interface'])
+        mut_dict["VMconservation"] = \
+            float(var_mod_dict[variant]['Conservation'])
     return mut_list
 
-def makeProveanSiftDict():
+def make_provean_sift_dict():
     with open("/opt/predict/datafiles/ProveanResults.csv") as f:
-        proveanDict = {}
+        provean_dict = {}
         reader = csv.DictReader(f)
         for row in reader:
-            variant = "{}{}{}".format(row["RESIDUE_REF"], row["POSITION"], row["RESIDUE_ALT"])
-            proveanDict[variant] = row
-    return proveanDict
+            variant = "{}{}{}".format(row["RESIDUE_REF"], row["POSITION"],
+                                      row["RESIDUE_ALT"])
+            provean_dict[variant] = row
+    return provean_dict
 
-def getProveanSiftScore(proveanDict, wtRes, codon, mutRes, scoreString):
-    variant = "{}{}{}".format(wtRes, codon, mutRes)
-    return float(proveanDict[variant][scoreString])
+def get_provean_sift_score(provean_dict, variant, score_string):
+    return float(provean_dict[variant][score_string])
+
+def add_provean_sift_scores(mut_list):
+    provean_dict = make_provean_sift_dict()
+    for mut_dict in mut_list:
+        variant = mut_dict["wtres"] + str(mut_dict["codon"]) + \
+                  mut_dict["mutres"]
+        mut_dict["ProveanScore"] = get_provean_sift_score(provean_dict,
+                                                          variant, "PSCORE")
+        mut_dict["SIFTscore"] = get_provean_sift_score(provean_dict,
+                                                       variant,  "SSCORE")
+    return mut_list
 
 def get_full_mut_list():
     mut_list = start_mut_list()
     mut_list = add_mapp_scores(mut_list)
     mut_list = add_ss_and_asa_scores(mut_list)
     mut_list = add_pph2_scores(mut_list)
-    mut_list = addSuspectScores(mut_list)
-    mut_list = addVarModScores(mut_list)
+    mut_list = add_suspect_scores(mut_list)
+    mut_list = add_var_mod_scores(mut_list)
+    mut_list = add_provean_sift_scores(mut_list)
 
     return mut_list

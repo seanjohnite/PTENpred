@@ -24,6 +24,10 @@ allFields = [
     'pph2_dScore',
     'SuspectScore',
     'VarModScore',
+    'VMinterface',
+    'VMconservation',
+    'ProveanScore',
+    'SIFTscore',
     'ASA',
     'helix',
     '310helix',
@@ -38,6 +42,7 @@ allFields = [
 INCLUDED_SCORES = [
     #'numCancerMuts',
     #'avgSampleMutCount',
+    'codon',
     'mutMAPPscore',
     'wtMAPPscore',
     'pph2_prob',
@@ -49,6 +54,8 @@ INCLUDED_SCORES = [
     'VarModScore',
     'VMinterface',
     'VMconservation',
+    'ProveanScore',
+    'SIFTscore',
     'ASA',
     'helix',
     '310helix',
@@ -192,19 +199,22 @@ class PredictionPackage(object):
         # make all score dictionaries
         score_vector = []
         mapp_dict = make_mapp_dict()
-        sus_struc_dict = makeSuspectScoreDict(
+        sus_struc_dict = make_suspect_score_dict(
             "/opt/predict/datafiles/SuspectStructure.csv"
         )
-        sus_seq_dict = makeSuspectScoreDict(
+        sus_seq_dict = make_suspect_score_dict(
             "/opt/predict/datafiles/SuspectSequence.csv"
         )
         ss_and_asa_dict = make_ss_and_asa_dict()
         sub_ss_and_asa_dict = make_sub_ss_and_asa_dict()
         pph2_dict = make_pph2_dict()
-        varmod_dict = makeVarModDict()
+        varmod_dict = make_var_mod_dict()
+        provean_dict = make_provean_sift_dict()
+        variant = "{}{}{}".format(wt_res, codon, mut_res)
 
         for score in self.included_scores:
             score_vector.append({
+                'codon': codon,
                 'mutMAPPscore': get_mapp_score(mapp_dict,
                                              codon, mut_res),
                 'wtMAPPscore': get_mapp_score(mapp_dict,
@@ -219,17 +229,21 @@ class PredictionPackage(object):
                                          wt_res, codon, mut_res, 'pph2_FDR'),
                 'pph2_dScore': get_pph2_prob(pph2_dict,
                                             wt_res, codon, mut_res, 'dScore'),
-                'SuspectScore': getSuspectScore(sus_struc_dict,
+                'SuspectScore': get_suspect_score(sus_struc_dict,
                                                 sus_seq_dict, codon, mut_res),
-                'VarModScore': getVarModScore(varmod_dict,
+                'VarModScore': get_var_mod_score(varmod_dict,
                                               wt_res, codon, mut_res,
                                               'VarMod Probability'),
-                'VMinterface': getVarModScore(varmod_dict,
+                'VMinterface': get_var_mod_score(varmod_dict,
                                               wt_res, codon, mut_res,
                                               'Interface'),
-                'VMconservation': getVarModScore(varmod_dict,
+                'VMconservation': get_var_mod_score(varmod_dict,
                                                  wt_res, codon, mut_res,
                                                  'Conservation'),
+                'ProveanScore': get_provean_sift_score(provean_dict, variant,
+                                                       'PSCORE'),
+                'SIFTscore': get_provean_sift_score(provean_dict, variant,
+                                                    'SSCORE'),
                 'ASA':      get_asa_score(codon, ss_and_asa_dict,
                                         sub_ss_and_asa_dict),
                 'helix':    get_ss_score(codon, ss_and_asa_dict,

@@ -1,3 +1,8 @@
+"""
+Helper file for classifyMutation.py
+Stores definitions for PredictionPackage class and MutationGroup class
+"""
+
 __author__ = 'sean'
 
 import numpy as np
@@ -40,7 +45,7 @@ allFields = [
 ]
 
 INCLUDED_SCORES = [
-    #'numCancerMuts',
+    # 'numCancerMuts',
     #'avgSampleMutCount',
     'codon',
     'mutMAPPscore',
@@ -67,6 +72,7 @@ INCLUDED_SCORES = [
     'psi',
 ]
 
+
 def get_cat_2(category):
     return {
         "SOMATIC": 1,
@@ -74,6 +80,7 @@ def get_cat_2(category):
         "AUTISM": 1,
         "NULL": 0
     }[category]
+
 
 def get_cat_22(category):
     return {
@@ -83,6 +90,7 @@ def get_cat_22(category):
         "NULL": 0
     }[category]
 
+
 def get_cat_3(category):
     return {
         "SOMATIC": 2,
@@ -91,6 +99,7 @@ def get_cat_3(category):
         "NULL": 0
     }[category]
 
+
 def get_cat_4(category):
     return {
         "SOMATIC": 2,
@@ -98,7 +107,6 @@ def get_cat_4(category):
         "AUTISM": 1,
         "NULL": 0
     }[category]
-
 
 
 class MutationGroup(object):
@@ -110,6 +118,7 @@ class MutationGroup(object):
     Each mutation dictionary contains a number of keys from included_scores,
     and the key points to that associated score.
     """
+
     def __init__(self, mut_list):
         list_mut = []
         category_4_list = []
@@ -139,7 +148,6 @@ class MutationGroup(object):
 
         scaled_vector_array = scaler.transform(vector_array)
 
-
         self.listmut = list_mut
         self.scaler = scaler
         self.category_4_list = np.array(category_4_list)
@@ -162,14 +170,15 @@ class MutationGroup(object):
             for mutation in self.listmut:
                 f.write(mutation + "\n")
 
+
 class PredictionPackage(object):
     """
     Stores everything needed to predict a new score vector.
     Instantiation requires the category split (2, 22, 3, 4) and whether or not
     to use probabilities from sklearn.svm.SVC
     """
-    def __init__(self, num_cats, probs):
 
+    def __init__(self, num_cats, probs):
         classifier, scaler, category_array, scaled_vector_array = \
             get_prediction_info(num_cats, probs)
 
@@ -192,8 +201,6 @@ class PredictionPackage(object):
         :param wt_res: WT PTEN residue
         :param codon: PTEN amino acid position
         :param mut_res: variant
-        :param scores_needed: list of scores required for classifier
-        :param scaler: scikit-learn scaler object used for classifier
         :return: scaled score vector
         """
         # make all score dictionaries
@@ -216,58 +223,59 @@ class PredictionPackage(object):
             score_vector.append({
                 'codon': codon,
                 'mutMAPPscore': get_mapp_score(mapp_dict,
-                                             codon, mut_res),
+                                               codon, mut_res),
                 'wtMAPPscore': get_mapp_score(mapp_dict,
-                                            codon, wt_res),
+                                              codon, wt_res),
                 'pph2_prob': get_pph2_prob(pph2_dict, wt_res,
-                                          codon, mut_res, 'pph2_prob'),
+                                           codon, mut_res, 'pph2_prob'),
                 'pph2_FPR': get_pph2_prob(pph2_dict,
-                                         wt_res, codon, mut_res, 'pph2_FPR'),
+                                          wt_res, codon, mut_res, 'pph2_FPR'),
                 'pph2_TPR': get_pph2_prob(pph2_dict,
-                                         wt_res, codon, mut_res, 'pph2_TPR'),
+                                          wt_res, codon, mut_res, 'pph2_TPR'),
                 'pph2_FDR': get_pph2_prob(pph2_dict,
-                                         wt_res, codon, mut_res, 'pph2_FDR'),
+                                          wt_res, codon, mut_res, 'pph2_FDR'),
                 'pph2_dScore': get_pph2_prob(pph2_dict,
-                                            wt_res, codon, mut_res, 'dScore'),
+                                             wt_res, codon, mut_res, 'dScore'),
                 'SuspectScore': get_suspect_score(sus_struc_dict,
-                                                sus_seq_dict, codon, mut_res),
+                                                  sus_seq_dict, codon, mut_res),
                 'VarModScore': get_var_mod_score(varmod_dict,
-                                              wt_res, codon, mut_res,
-                                              'VarMod Probability'),
-                'VMinterface': get_var_mod_score(varmod_dict,
-                                              wt_res, codon, mut_res,
-                                              'Interface'),
-                'VMconservation': get_var_mod_score(varmod_dict,
                                                  wt_res, codon, mut_res,
-                                                 'Conservation'),
+                                                 'VarMod Probability'),
+                'VMinterface': get_var_mod_score(varmod_dict,
+                                                 wt_res, codon, mut_res,
+                                                 'Interface'),
+                'VMconservation': get_var_mod_score(varmod_dict,
+                                                    wt_res, codon, mut_res,
+                                                    'Conservation'),
                 'ProveanScore': get_provean_sift_score(provean_dict, variant,
                                                        'PSCORE'),
                 'SIFTscore': get_provean_sift_score(provean_dict, variant,
                                                     'SSCORE'),
-                'ASA':      get_asa_score(codon, ss_and_asa_dict,
-                                        sub_ss_and_asa_dict),
-                'helix':    get_ss_score(codon, ss_and_asa_dict,
-                                       sub_ss_and_asa_dict, 'H'),
+                'ASA': get_asa_score(codon, ss_and_asa_dict,
+                                     sub_ss_and_asa_dict),
+                'helix': get_ss_score(codon, ss_and_asa_dict,
+                                      sub_ss_and_asa_dict, 'H'),
                 '310helix': get_ss_score(codon, ss_and_asa_dict,
-                                       sub_ss_and_asa_dict, 'G'),
-                'strand':   get_ss_score(codon, ss_and_asa_dict,
+                                         sub_ss_and_asa_dict, 'G'),
+                'strand': get_ss_score(codon, ss_and_asa_dict,
                                        sub_ss_and_asa_dict, 'E'),
-                'turn':     get_ss_score(codon, ss_and_asa_dict,
-                                       sub_ss_and_asa_dict, 'T'),
-                'bridge':   get_ss_score(codon, ss_and_asa_dict,
+                'turn': get_ss_score(codon, ss_and_asa_dict,
+                                     sub_ss_and_asa_dict, 'T'),
+                'bridge': get_ss_score(codon, ss_and_asa_dict,
                                        sub_ss_and_asa_dict, 'B'),
-                'coil':     get_ss_score(codon, ss_and_asa_dict,
-                                       sub_ss_and_asa_dict, 'C'),
-                'phi':      get_phi_score(codon, ss_and_asa_dict,
-                                        sub_ss_and_asa_dict),
-                'psi':      get_psi_score(codon, ss_and_asa_dict,
-                                        sub_ss_and_asa_dict),
+                'coil': get_ss_score(codon, ss_and_asa_dict,
+                                     sub_ss_and_asa_dict, 'C'),
+                'phi': get_phi_score(codon, ss_and_asa_dict,
+                                     sub_ss_and_asa_dict),
+                'psi': get_psi_score(codon, ss_and_asa_dict,
+                                     sub_ss_and_asa_dict),
             }[score])
         return self.scaler.transform(np.array(score_vector))
 
+
 def get_prediction_info(num_cats, probs):
     """
-    Returns new prediction package object based on the list of known mutations
+    Returns prediction information from the list of known mutations
     :param num_cats: number of category split (2, 22, 3, 4)
     :param probs: whether to fit with probability option
     :return: prediction package object
@@ -291,6 +299,7 @@ def get_prediction_info(num_cats, probs):
 
     return clf, pten_mutations.scaler, cat_array, scaled_vector_array
 
+
 def get_classifier(vector_array, cat_array, num_cats, probs):
     """
     Function to get a cross-validated grid-searched classifier
@@ -304,17 +313,17 @@ def get_classifier(vector_array, cat_array, num_cats, probs):
     X, y = vector_array, cat_array
 
     scorer = {
-        2:  make_scorer(f1_score, pos_label=0),
+        2: make_scorer(f1_score, pos_label=0),
         22: make_scorer(f1_score, pos_label=0),
-        3:  make_scorer(f1_score),
-        4:  make_scorer(f1_score)
+        3: make_scorer(f1_score),
+        4: make_scorer(f1_score)
     }[num_cats]
 
     folds = {
-        2:  10,
+        2: 10,
         22: 10,
-        3:  10,
-        4:  10
+        3: 10,
+        4: 10
     }[num_cats]
 
     param_grid = [

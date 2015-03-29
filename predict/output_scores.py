@@ -26,14 +26,12 @@ Score outputter. Stores scores in a list of dictionaries with these keys:
     'coil',
     'phi',
     'psi'
-
+Helper file for classifyMutation.py
 
 """
 __author__ = 'sean'
 
-
 import csv
-
 
 
 def make_mapp_dict():
@@ -58,6 +56,7 @@ def get_mapp_score(mapp_dict, codon, residue):
         return 5.0
     else:
         return float(mapp_dict[codon][residue])
+
 
 def start_mut_list():
     with open("/opt/predict/datafiles/CollatedMuts2.csv", "r") as f:
@@ -92,16 +91,18 @@ def start_mut_list():
             mut_list.append(rowdict)
     return mut_list
 
+
 def add_mapp_scores(mut_list):
     mapp_dict = make_mapp_dict()
     for mut_dict in mut_list:
-            mut_dict["mutMAPPscore"] = get_mapp_score(mapp_dict,
-                                                     int(mut_dict["codon"]),
-                                                     mut_dict["mutres"])
-            mut_dict["wtMAPPscore"] = get_mapp_score(mapp_dict,
-                                                    int(mut_dict["codon"]),
-                                                    mut_dict["wtres"])
+        mut_dict["mutMAPPscore"] = get_mapp_score(mapp_dict,
+                                                  int(mut_dict["codon"]),
+                                                  mut_dict["mutres"])
+        mut_dict["wtMAPPscore"] = get_mapp_score(mapp_dict,
+                                                 int(mut_dict["codon"]),
+                                                 mut_dict["wtres"])
     return mut_list
+
 
 def make_pph2_dict():
     with open("/opt/predict/datafiles/pph2-full3.csv", "r") as f:
@@ -112,10 +113,12 @@ def make_pph2_dict():
             pph2_dict[variant] = row
     return pph2_dict
 
+
 def add_pph2_scores(mut_list):
     pph2_dict = make_pph2_dict()
     for mut_dict in mut_list:
-        variant = mut_dict["wtres"] + str(mut_dict["codon"]) + mut_dict["mutres"]
+        variant = mut_dict["wtres"] + str(mut_dict["codon"]) + mut_dict[
+            "mutres"]
         mut_dict["pph2_prob"] = float(pph2_dict[variant]["pph2_prob"])
         mut_dict["pph2_FPR"] = float(pph2_dict[variant]["pph2_FPR"])
         mut_dict["pph2_TPR"] = float(pph2_dict[variant]["pph2_TPR"])
@@ -123,9 +126,11 @@ def add_pph2_scores(mut_list):
         mut_dict["pph2_dScore"] = float(pph2_dict[variant]["dScore"])
     return mut_list
 
+
 def get_pph2_prob(pph2_dict, wtres, codon, mutres, score_string):
     variant = "{}{}{}".format(wtres, codon, mutres)
     return float(pph2_dict[variant][score_string])
+
 
 def make_ss_and_asa_dict():
     with open("/opt/predict/datafiles/SSandASA.csv", "r") as f:
@@ -136,6 +141,7 @@ def make_ss_and_asa_dict():
             ss_and_asa_dict[codon] = row
     return ss_and_asa_dict
 
+
 def make_sub_ss_and_asa_dict():
     with open("/opt/predict/datafiles/SpineXASASSP.csv") as f:
         reader = csv.DictReader(f)
@@ -145,12 +151,14 @@ def make_sub_ss_and_asa_dict():
             spine_x_dict[codon] = row
     return spine_x_dict
 
+
 def get_asa_score(codon, ss_and_asa_dict, spine_x_dict):
     try:
         score = float(ss_and_asa_dict[codon]["ASA"])
     except KeyError:
         score = float(spine_x_dict[codon]["ASA"])
     return score
+
 
 def get_phi_score(codon, ss_and_asa_dict, spine_x_dict):
     try:
@@ -159,12 +167,14 @@ def get_phi_score(codon, ss_and_asa_dict, spine_x_dict):
         score = float(spine_x_dict[codon]["Phi"])
     return score
 
+
 def get_psi_score(codon, ss_and_asa_dict, spine_x_dict):
     try:
         score = float(ss_and_asa_dict[codon]["psi"])
     except KeyError:
         score = float(spine_x_dict[codon]["Psi"])
     return score
+
 
 def get_ss_score(codon, ss_and_asa_dict, spine_x_dict, ss_abbrev):
     try:
@@ -179,6 +189,7 @@ def get_ss_score(codon, ss_and_asa_dict, spine_x_dict, ss_abbrev):
             score = 0
     return score
 
+
 def add_ss_and_asa_scores(mut_list):
     ss_and_asa_dict = make_ss_and_asa_dict()
     spine_x_dict = make_sub_ss_and_asa_dict()
@@ -191,7 +202,7 @@ def add_ss_and_asa_scores(mut_list):
         mut_dict["coil"] = get_ss_score(codon, ss_and_asa_dict,
                                         spine_x_dict, 'C')
         mut_dict["bridge"] = get_ss_score(codon, ss_and_asa_dict,
-                                          spine_x_dict, 'B') 
+                                          spine_x_dict, 'B')
         mut_dict["turn"] = get_ss_score(codon, ss_and_asa_dict,
                                         spine_x_dict, 'T')
         mut_dict["strand"] = get_ss_score(codon, ss_and_asa_dict,
@@ -200,6 +211,7 @@ def add_ss_and_asa_scores(mut_list):
         mut_dict["phi"] = get_phi_score(codon, ss_and_asa_dict, spine_x_dict)
         mut_dict["psi"] = get_psi_score(codon, ss_and_asa_dict, spine_x_dict)
     return mut_list
+
 
 def make_suspect_score_dict(filename):
     with open(filename) as f:
@@ -210,12 +222,14 @@ def make_suspect_score_dict(filename):
             suspect_dict[codon] = row
     return suspect_dict
 
+
 def get_suspect_score(sus_str_dict, sus_seq_dict, codon, mut_res):
     try:
         score = float(sus_str_dict[codon][mut_res])
     except KeyError:
         score = float(sus_seq_dict[codon][mut_res])
     return score
+
 
 def add_suspect_scores(mut_list):
     sus_str_dict = make_suspect_score_dict(
@@ -232,6 +246,7 @@ def add_suspect_scores(mut_list):
                 float(sus_seq_dict[codon][mut_dict["mutres"]])
     return mut_list
 
+
 def make_var_mod_dict():
     with open("/opt/predict/datafiles/VarmodResults2.csv") as f:
         var_mod_dict = {}
@@ -240,6 +255,7 @@ def make_var_mod_dict():
             variant = row["Variant"]
             var_mod_dict[variant] = row
     return var_mod_dict
+
 
 def get_var_mod_score(VarModDict, wt_res, codon, mut_res, score_string):
     variant = "{}{}{}".format(wt_res, codon, mut_res)
@@ -259,6 +275,7 @@ def add_var_mod_scores(mut_list):
             float(var_mod_dict[variant]['Conservation'])
     return mut_list
 
+
 def make_provean_sift_dict():
     with open("/opt/predict/datafiles/ProveanResults.csv") as f:
         provean_dict = {}
@@ -269,8 +286,10 @@ def make_provean_sift_dict():
             provean_dict[variant] = row
     return provean_dict
 
+
 def get_provean_sift_score(provean_dict, variant, score_string):
     return float(provean_dict[variant][score_string])
+
 
 def add_provean_sift_scores(mut_list):
     provean_dict = make_provean_sift_dict()
@@ -280,8 +299,9 @@ def add_provean_sift_scores(mut_list):
         mut_dict["ProveanScore"] = get_provean_sift_score(provean_dict,
                                                           variant, "PSCORE")
         mut_dict["SIFTscore"] = get_provean_sift_score(provean_dict,
-                                                       variant,  "SSCORE")
+                                                       variant, "SSCORE")
     return mut_list
+
 
 def get_full_mut_list():
     mut_list = start_mut_list()

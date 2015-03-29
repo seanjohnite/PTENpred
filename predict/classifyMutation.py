@@ -28,7 +28,7 @@ optional arguments:
 
 import argparse
 from sklearn.externals import joblib
-from mut_group_pred_pack import *
+from mut_group_pred_pack import PredictionPackage
 import getpass
 
 
@@ -39,6 +39,7 @@ def load_pred_pack(filename):
     :return: the indicated PredictionPackage object
     """
     return joblib.load(filename)
+
 
 def get_variant_info(variant):
     """
@@ -65,6 +66,7 @@ def get_category_name(class_, num_cats):
         3: ["null", "autism", "pathogenic"],
         4: ["null", "autism", "somatic", "PHTS"]
     }[num_cats][class_]
+
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
@@ -94,12 +96,13 @@ def parse_arguments():
 
     return parser.parse_args()
 
+
 def main():
     # parse arguments from command line
     args = parse_arguments()
 
-    num_cats = args.cats         # which category split to use (2, 22, 3, 4)
-    variant = args.variant       # variant to test/predict
+    num_cats = args.cats  # which category split to use (2, 22, 3, 4)
+    variant = args.variant  # variant to test/predict
     make_new_pack = args.mkpack  # whether to recollect and refit the data
     probs = args.probs
 
@@ -140,11 +143,7 @@ def main():
     # get score vector and scale score vector with scaler stored in pred_pack
     scaledScoreVector = pred_pack.get_scores(wtRes, codon, mutRes)
 
-
-
     class_ = pred_pack.predict(scaledScoreVector)
-
-
 
     print("------Prediction information for variant {}-------".format(variant))
 
@@ -157,7 +156,7 @@ def main():
 
     print("Predicted class is {}.".format(get_category_name(class_, num_cats)))
 
-    if num_cats == 22: #catch weird categorization class type
+    if num_cats == 22:  # catch weird categorization class type
         num = 2
     else:
         num = num_cats
@@ -165,9 +164,8 @@ def main():
     if probs:
         probabilities = pred_pack.predict_proba(scaledScoreVector)
         for i in range(num):
-            print("Probability of class {} is {:.2f}.".format(get_category_name(i, num_cats), probabilities[0][i]))
-
-
+            print("Probability of class {} is {:.2f}.".format(
+                get_category_name(i, num_cats), probabilities[0][i]))
 
 
 if __name__ == "__main__":

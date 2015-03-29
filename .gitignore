@@ -1,4 +1,3 @@
 home/*
 wwwVarHtml/*
-predict/datafiles/jl2/*
-predict/datafiles/joblib/*
+predict/datafiles/joblib/www/*

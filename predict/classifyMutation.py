@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""\
+"""
 classifyMutation.py
 
-Takes in a mutation, classifies it using a stored sklearn classifier,
-and outputs the category the classifier believes it belongs to.
+Takes in a mutation, classifies it using a stored sklearn classifier (or
+optionally creates a new one), and outputs the category the classifier
+believes it belongs to.
 
 usage: classifyMutation.py [-h] [-c {2,22,3,4}] [-pp PREDPACK]
                            [-mk {True,False}] [-pr {True,False}]
@@ -18,8 +19,6 @@ optional arguments:
   -h, --help            show this help message and exit
   -c {2,22,3,4}, --cats {2,22,3,4}
                         number of categories to fit to
-  -pp PREDPACK, --predpack PREDPACK
-                        file location of PredictionPackage object
   -mk {True,False}, --mkpack {True,False}
                         remake prediction pack?
   -pr {True,False}, --probs {True,False}
@@ -77,10 +76,6 @@ def parse_arguments():
                         help='number of categories to fit to',
                         type=int,
     )
-    parser.add_argument('-pp', '--predpack',
-                        help='file location of PredictionPackage object',
-                        type=str
-    )
     parser.add_argument('-mk', '--mkpack',
                         choices=[True, False],
                         default=False,
@@ -106,7 +101,7 @@ def main():
     make_new_pack = args.mkpack  # whether to recollect and refit the data
     probs = args.probs
 
-    # -------------------Which Prediction Package to Use?----------------------- #
+    # -------------------Which Prediction Package to Use?-------------------- #
     # checks for probability feature (scores are not very accurate)
     prob = {
         True: "pr",
@@ -133,10 +128,9 @@ def main():
             )
         )
 
-    # ------------- Prediction package is stored in pred_pack ----------------------- #
+    # ------------- Prediction package is stored in pred_pack --------------- #
 
-    # ------------- Get scores and scale scores for new variant -------------------- #
-
+    # ------------- Get scores and scale scores for new variant ------------- #
     # getting variant information
     wtRes, codon, mutRes = get_variant_info(variant)
 

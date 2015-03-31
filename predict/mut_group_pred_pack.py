@@ -180,7 +180,7 @@ class PredictionPackage(object):
 
     def __init__(self, num_cats, probs):
         classifier, scaler, category_array, scaled_vector_array = \
-            get_prediction_info(num_cats, probs)
+            get_prediction_info(num_cats, probs, get_full_mut_list())
 
         self.classifier = classifier
         self.scaler = scaler
@@ -273,15 +273,13 @@ class PredictionPackage(object):
         return self.scaler.transform(np.array(score_vector))
 
 
-def get_prediction_info(num_cats, probs):
+def get_prediction_info(num_cats, probs, mut_list):
     """
     Returns prediction information from the list of known mutations
     :param num_cats: number of category split (2, 22, 3, 4)
     :param probs: whether to fit with probability option
     :return: prediction package object
     """
-
-    mut_list = get_full_mut_list()
 
     pten_mutations = MutationGroup(mut_list)
 
@@ -344,3 +342,13 @@ def get_classifier(vector_array, cat_array, num_cats, probs):
     clf = clf.fit(X, y)
 
     return clf
+
+def stratified_tt_split(vectors, labels, **kwargs):
+    split1 = cross_validation.StratifiedShuffleSplit(
+        labels, 1, **kwargs
+    )
+    for split in split1:
+        testIndex = split[0]
+        trainIndex = split[1]
+
+    return vectors[trainIndex], labels[trainIndex], vectors[testIndex], labels[testIndex]

@@ -47,7 +47,7 @@ allFields = [
 INCLUDED_SCORES = [
     # 'numCancerMuts',
     #'avgSampleMutCount',
-    'codon',
+    #'codon',
     'mutMAPPscore',
     'wtMAPPscore',
     'pph2_prob',
@@ -99,6 +99,14 @@ def get_cat_3(category):
         "NULL": 0
     }[category]
 
+def get_cat_33(category):
+    return {
+        "SOMATIC": 1,
+        "PHTS": 2,
+        "AUTISM": 1,
+        "NULL": 0
+    }[category]
+
 
 def get_cat_4(category):
     return {
@@ -125,6 +133,7 @@ class MutationGroup(object):
         category_2_list = []
         category_22_list = []
         category_3_list = []
+        category_33_list = []
         vector_list = []
 
         for mut_dict in mut_list:
@@ -136,6 +145,7 @@ class MutationGroup(object):
             category_2_list.append(get_cat_2(category))
             category_22_list.append(get_cat_22(category))
             category_3_list.append(get_cat_3(category))
+            category_33_list.append(get_cat_33(category))
 
             vector = []
             for key in INCLUDED_SCORES:
@@ -154,6 +164,7 @@ class MutationGroup(object):
         self.category_2_list = np.array(category_2_list)
         self.category_22_list = np.array(category_22_list)
         self.category_3_list = np.array(category_3_list)
+        self.category_33_list = np.array(category_33_list)
         self.scaled_vector_array = scaled_vector_array
 
     def get_cat4array(self):
@@ -178,9 +189,20 @@ class PredictionPackage(object):
     to use probabilities from sklearn.svm.SVC
     """
 
-    def __init__(self, num_cats, probs):
-        classifier, scaler, category_array, scaled_vector_array = \
-            get_prediction_info(num_cats, probs, get_full_mut_list())
+    def __init__(self, num_cats, probs, mut_list=None, test=False, **kwargs):
+        if not mut_list:
+            mut_list = get_full_mut_list()
+
+        if test:
+            classifier, scaler, category_array, scaled_vector_array, X_test, \
+            y_test = \
+                get_prediction_info(num_cats, probs, mut_list, test=True,
+                                    **kwargs)
+            self.X_test = X_test
+            self.y_test = y_test
+        else:
+            classifier, scaler, category_array, scaled_vector_array = \
+                get_prediction_info(num_cats, probs, mut_list, **kwargs)
 
         self.classifier = classifier
         self.scaler = scaler
@@ -273,7 +295,7 @@ class PredictionPackage(object):
         return self.scaler.transform(np.array(score_vector))
 
 
-def get_prediction_info(num_cats, probs, mut_list):
+def get_prediction_info(num_cats, probs, mut_list, test=False, **kwargs):
     """
     Returns prediction information from the list of known mutations
     :param num_cats: number of category split (2, 22, 3, 4)
@@ -283,22 +305,35 @@ def get_prediction_info(num_cats, probs, mut_list):
 
     pten_mutations = MutationGroup(mut_list)
 
+    print(pten_mutations.category_2_list)
+    print(pten_mutations.category_22_list)
+    print(pten_mutations.category_3_list)
+    print(pten_mutations.category_33_list)
+    print(pten_mutations.category_4_list)
+
     cat_array = {
         2: pten_mutations.category_2_list,
         22: pten_mutations.category_22_list,
         3: pten_mutations.category_3_list,
+        33: pten_mutations.category_33_list,
         4: pten_mutations.category_4_list,
     }[num_cats]
 
     scaled_vector_array = pten_mutations.scaled_vector_array
 
-    clf = get_classifier(scaled_vector_array,
-                         cat_array, num_cats, probs)
+    if test:
+        clf, X_test, y_test = get_classifier(scaled_vector_array, cat_array, num_cats,
+                              probs, test=True, **kwargs)
+        return clf, pten_mutations.scaler, cat_array, scaled_vector_array, \
+               X_test, y_test
+    else:
+        clf = get_classifier(scaled_vector_array,
+                         cat_array, num_cats, probs, **kwargs)
+        return clf, pten_mutations.scaler, cat_array, scaled_vector_array
 
-    return clf, pten_mutations.scaler, cat_array, scaled_vector_array
 
-
-def get_classifier(vector_array, cat_array, num_cats, probs):
+def get_classifier(vector_array, cat_array, num_cats, probs, test=False,
+                   **kwargs):
     """
     Function to get a cross-validated grid-searched classifier
         for training data
@@ -308,40 +343,47 @@ def get_classifier(vector_array, cat_array, num_cats, probs):
     :param probs: boolean, whether to use probabilities in fit
     :return: cross-validated and grid searched classifier
     """
-    X, y = vector_array, cat_array
+    if test:
+        X_train, y_train, X_test, y_test = stratified_tt_split(
+            vector_array, cat_array, **kwargs
+        )
+    else:
+        X_train, y_train = vector_array, cat_array
 
     scorer = {
         2: make_scorer(f1_score, pos_label=0),
         22: make_scorer(f1_score, pos_label=0),
         3: make_scorer(f1_score),
+        33: make_scorer(f1_score),
         4: make_scorer(f1_score)
     }[num_cats]
 
     folds = {
         2: 10,
         22: 10,
+        33: 10,
         3: 10,
         4: 10
     }[num_cats]
 
     param_grid = [
-        {'C': [1, 10, 100, 1000],
-         'kernel': ['linear']},
-        {'C': [1, 10, 100, 1000],
-         'gamma': [0.01, 0.001, 0.0001],
-         'kernel': ['rbf']},
+        {'C': [100, 200, 300, 400, 600, 800, 1000],
+         'gamma': [0.001, 0.0008, 0.0006, 0.0004, 0.0002,  0.0001]},
     ]
 
-    cv = cross_validation.StratifiedKFold(y, folds, shuffle=True)
+    cv = cross_validation.StratifiedKFold(y_train, folds, shuffle=True)
 
     clf = GridSearchCV(SVC(cache_size=2000,
                            class_weight='auto',
                            probability=probs),
                        param_grid, scoring=scorer, n_jobs=-1, cv=cv)
 
-    clf = clf.fit(X, y)
+    clf = clf.fit(X_train, y_train)
 
-    return clf
+    if test:
+        return clf, X_test, y_test
+    else:
+        return clf
 
 def stratified_tt_split(vectors, labels, **kwargs):
     split1 = cross_validation.StratifiedShuffleSplit(

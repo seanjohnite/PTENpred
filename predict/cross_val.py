@@ -9,47 +9,77 @@ from scipy.stats import f_oneway
 
 from mut_group_pred_pack import MutationGroup, get_full_mut_list, stratified_tt_split
 
+def get_x_y_scorer(mut_group, num_cats):
+    vectors = mut_group.scaled_vector_array
+    labels = {
+        2: mut_group.category_2_list,
+        22: mut_group.category_22_list,
+        3: mut_group.category_3_list,
+        33: mut_group.category_33_list,
+        4: mut_group.category_4_list
+    }[num_cats]
+    scorer = {
+        2: make_scorer(f1_score, pos_label=0),
+        22: make_scorer(f1_score, pos_label=0),
+        3: make_scorer(f1_score),
+        33: make_scorer(f1_score),
+        4: make_scorer(f1_score),
+    }[num_cats]
+    return vectors, labels, scorer
+
+def output(string, f):
+    print(string)
+    f.write("{}\n".format(string))
+
+def end_cv_run_output(i, cv_scores, f):
+    output("Cross-validation scores for {} run of {} category "
+          "split are {}".format(i+1, num_cats, cv_scores), f)
+    output("Mean is {}".format(mean(cv_scores)), f)
+    output("Std is {}".format(std(cv_scores)), f)
+
+def end_cv_run_set(scores, fi):
+    f, p = f_oneway(*scores)
+    output("Cross-validation finished for category split {}".format(
+        num_cats), fi)
+    output("One-way ANOVA results:", fi)
+    output("F = {}".format(f), fi)
+    output("p = {}".format(p), fi)
 
 
-pten_mutations = MutationGroup(get_full_mut_list())
+if __name__ == "__main__":
+    # Main script
+    pten_mutations = MutationGroup(get_full_mut_list())
 
-X, y = pten_mutations.scaled_vector_array, pten_mutations.category_2_list
-
-
-scores = []
-
-for i in range(10):
-
-    cv = StratifiedKFold(y, 6, shuffle=True, random_state=0)
-
+    num_cats_list = [2, 22, 3, 33, 4]
 
     param_grid = [
         {'C': [.1, 1, 10, 100, 1000 ],
          'gamma': [0.1, 0.01, 0.001, 0.0001]},
     ]
 
-    f1pos0 = make_scorer(f1_score, pos_label=0)
+    with open("datafiles/CV Score Results", "w") as f:
+        output("----Starting CV for all categories----", f)
 
-    svc = SVC(kernel='rbf', cache_size=2000, class_weight='auto')
+        for num_cats in num_cats_list:
+            scores = []
+            X, y, scorer = get_x_y_scorer(pten_mutations, num_cats)
 
-    clf = GridSearchCV(svc, param_grid=param_grid, scoring=f1pos0, cv=4)
+            output("--  CV for {}  --".format(num_cats), f)
+            for i in range(2):
+                svc = SVC(kernel='rbf', cache_size=2000, class_weight='auto')
 
+                clf = GridSearchCV(svc, param_grid=param_grid, scoring=scorer, cv=4)
 
+                cv = StratifiedKFold(y, 6, shuffle=True, random_state=0)
 
-    cv_scores = cross_val_score(clf, X, y, cv=cv)
+                cv_scores = cross_val_score(clf, X, y, cv=cv)
 
-    scores.append(cv_scores)
+                scores.append(cv_scores)
 
-    print(cv_scores)
-    print(mean(cv_scores))
-    print(std(cv_scores))
+                end_cv_run_output(i, cv_scores, f)
+            end_cv_run_set(scores, f)
+        output("Cross-validation completed for all categories", f)
 
-scores = array(scores)
-
-f, p = f_oneway(*scores)
-
-print(f)
-print(p)
 
 
 
@@ -69,9 +99,3 @@ clf = GridSearchCV(svc, param_grid=param_grid, scoring=f1pos0)
 print([clf.fit(X[train], y[train]).score(X[test], y[test]) for train, test in
        cv])
 """
-
-if __name__ == "main":
-    # Main script
-    pten_mutations = MutationGroup(get_full_mut_list())
-
-    X, y = pten_mutations.scaled_vector_array, pten_mutations.category_2_list

@@ -9,78 +9,8 @@ import numpy as np
 from cross_val import get_x_y_scorer_folds
 from mut_group_pred_pack import get_full_mut_list, MutationGroup, \
     stratified_tt_split
+from sklearn.cross_validation import StratifiedShuffleSplit
 
-
-
-X, y, scorer, folds = get_x_y_scorer_folds(
-    MutationGroup(get_full_mut_list()), 2
-)
-
-
-
-
-
-
-
-
-svc = SVC(kernel='rbf', cache_size=2000, class_weight='auto')
-
-clf = GridSearchCV(svc, param_grid=param_grid, scoring=scorer, cv=3)
-
-X = PCA(n_components=2).fit_transform(X, y=y)
-
-X_train, y_train, X_test, y_test = stratified_tt_split(X, y, test_size=0.2)
-
-
-
-x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
-y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
-                     np.arange(y_min, y_max, h))
-
-mesh_grid = np.c_[xx.ravel(), yy.ravel()]
-
-meshPredict = clf.fit(X, y).predict(mesh_grid)
-
-meshPredict = meshPredict.reshape(xx.shape)
-
-plt.figure(figsize=(9, 4))
-
-plt.subplot(1, 2, 1)
-
-levels = [-.5, .5, 1.5, 2.5, 3.5]
-contour = plt.contourf(xx, yy, meshPredict, levels,
-                       colors=get_contour_colors(2))
-line = plt.contour(xx, yy, meshPredict, levels, colors=('k'))
-
-
-zero_class = np.where(y_test == 0)
-one_class = np.where(y_test == 1)
-
-plt.scatter(X_test[zero_class, 0], X_test[zero_class, 1], c='#027878',
-            label='Null')
-plt.scatter(X_test[one_class, 0], X_test[one_class, 1], c='#c22326',
-            label='Pathogenic')
-
-plt.xlim(xx.min(), xx.max())
-plt.ylim(yy.min(), yy.max())
-plt.xticks()
-plt.yticks()
-
-plt.xlabel('First principal component')
-plt.ylabel('Second principal component')
-plt.legend(loc="lower right")
-
-
-#plt.title(titles[i])
-"""
-from matplotlib.backends.backend_pdf import PdfPages
-pp = PdfPages('multipage.pdf')
-pp.savefig()
-pp.close()
-"""
-
-plt.show()
 
 def get_contour_colors(num_cats):
     color = {
@@ -114,7 +44,7 @@ def get_scatter_colors_labels(num_cats):
 # #fdb632 yellow light #fdc865
 # #c22326 red light #e05254
 
-def plot_contour(num_cats, meshPredict):
+def plot_contour(num_cats, xx, yy, meshPredict):
     levels = [-.5, .5, 1.5, 2.5, 3.5]
     plt.contourf(xx, yy, meshPredict, levels, colors=get_contour_colors(
         num_cats))
@@ -127,11 +57,11 @@ def plot_scatter(num_cats, X, y):
         plt.scatter(X[indices, 0], X[indices, 1], c=colors[i],
             label=labels[i])
 
-def plot_subfigure(mut_group, num_cats, subplot):
+def plot_subfigure(mut_group, num_cats, subplot, indices):
     X, y, scorer, folds = get_x_y_scorer_folds(mut_group, num_cats)
 
     X = PCA(n_components=2).fit_transform(X, y=y)
-    X_train, y_train, X_test, y_test = stratified_tt_split(X, y, test_size=0.2)
+
 
     param_grid = [
     {'C': [.1, 1, 10, 100, 1000 ],
@@ -153,22 +83,45 @@ def plot_subfigure(mut_group, num_cats, subplot):
 
     plt.subplot(1, 2, subplot)
 
-    plot_contour(num_cats, meshPredict)
+    plot_contour(num_cats, xx, yy, meshPredict)
 
-    plot_scatter(num_cats, X_test, y_test)
+    plot_scatter(num_cats, X[indices], y[indices])
 
+    plt.xlim(xx.min(), xx.max())
+    plt.ylim(yy.min(), yy.max())
+    plt.xticks()
+    plt.yticks()
 
+    plt.xlabel('First principal component')
+    plt.ylabel('Second principal component')
+    plt.legend(loc="lower right")
 
+def plot_pdf(filename):
+    from matplotlib.backends.backend_pdf import PdfPages
+    pp = PdfPages(filename)
+    pp.savefig()
+    pp.close()
 
 
 if __name__ == "__main__":
 
     classes = [2, 22]
 
-    plt.figure(9, 5)
+    plt.figure(figsize=(10, 5))
 
     pten_mutations = MutationGroup(get_full_mut_list())
 
+    strat_split = StratifiedShuffleSplit(pten_mutations.category_22_list, 1,
+                                         test_size=0.2, random_state=0)
+
+    for train, test in strat_split:
+        train = train
+        test = test
+
     for i, num_cats in enumerate(classes):
 
-        plot_subfigure(pten_mutations, num_cats, i)
+        plot_subfigure(pten_mutations, num_cats, i, test)
+
+    plot_pdf("catsplit{}-{}.pdf".format(classes[0], classes[1]))
+
+    plt.show()

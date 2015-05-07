@@ -22,8 +22,16 @@ will "turn on" the Python version in your terminal. If everything worked, your c
 
     (PTENpredenv) computer-name:PTENpred user$
 
-Now, you can install the packages required to run PTENpred.
+Now, you can install the packages required to run PTENpred just for the PTENpredenv virtual environment.
 
-    pip install requirements.txt
+    pip install -r requirements.txt
 
 will install all of the required packages for PTENpred.
+
+`cd predict` into the folder where the scripts are, and run PTENpred with the following command syntax:
+
+    ./classifyMutation.py [-c CAT_SPLIT] VARIANT
+    
+ `CAT_SPLIT` is a number that designates the way certain groups of mutations are categorized in the training data for each predictor. This is `2` by default, but can also be `22, 3,` or `4`.
+ 
+ PTENpred will give the possible categories for a specified prediction as well as the predicted category.

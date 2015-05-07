@@ -117,13 +117,13 @@ def main():
         pred_pack = PredictionPackage(num_cats, probs)
         joblib.dump(
             pred_pack,
-            "/opt/predict/datafiles/joblib{}/defaultPack{}{}.jl".format(
+            "datafiles/joblib{}/defaultPack{}{}.jl".format(
                 wwwString, num_cats, prob[probs]
             )
         )
     else:  # using old prediction package
         pred_pack = load_pred_pack(
-            "/opt/predict/datafiles/joblib{}/defaultPack{}{}.jl".format(
+            "datafiles/joblib{}/defaultPack{}{}.jl".format(
                 wwwString, num_cats, prob[probs]
             )
         )

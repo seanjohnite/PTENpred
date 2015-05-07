@@ -1,4 +1,14 @@
-__author__ = 'sean'
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+roc_crossval.py
+
+Uses binary classifiers (category splits 2 and 22) to generate a Receiver
+Operating Characteristic (ROC) curve with calculated area under the curve (AUC).
+
+usage: roc_crossval.py
+"""
 
 import numpy as np
 from scipy import interp
@@ -31,6 +41,11 @@ def get_colors_labels(num_cats):
 
 
 def plot_roc_figure(pten_mutations, num_cats):
+    param_grid = [
+    {'C': [.1, 1, 10, 100, 1000 ],
+     'gamma': [0.1, 0.01, 0.001, 0.0001]},
+    ]
+
     X, y, scorer, folds = get_x_y_scorer_folds(pten_mutations, num_cats)
     cv = StratifiedKFold(y, n_folds=6, shuffle=True, random_state=0)
     svc = svm.SVC(kernel='rbf', cache_size=2000, class_weight='auto',
@@ -70,11 +85,6 @@ def plot_roc_figure(pten_mutations, num_cats):
 if __name__ == "__main__":
 
     classes = [2, 22]
-
-    param_grid = [
-    {'C': [.1, 1, 10, 100, 1000 ],
-     'gamma': [0.1, 0.01, 0.001, 0.0001]},
-    ]
 
     mut_list = get_full_mut_list()
     pten_mutations = MutationGroup(mut_list)

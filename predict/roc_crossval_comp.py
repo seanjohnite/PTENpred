@@ -1,4 +1,15 @@
-__author__ = 'sean'
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+roc_crossval_comp.py
+
+Uses binary classifiers (category splits 2) and published classifiers to
+generate a Receiver Operating Characteristic (ROC) curve with calculated
+area under the curve (AUC).
+
+usage: roc_crossval_comp.py
+"""
 
 import numpy as np
 from scipy import interp
@@ -34,7 +45,7 @@ def get_colors_labels(num_cats):
 def plot_polyphen_roc(num_cats):
 
     color = 'g'
-    label = 'polyphen'
+    label = 'Polyphen-2'
 
     pph2_dict = make_pph2_dict()
 
@@ -97,7 +108,7 @@ def plot_provean_roc(num_cats):
         variant = "{}{}{}".format(mut_dict["wtres"], mut_dict["codon"],
                                   mut_dict["mutres"])
         provean_score = get_provean_sift_score(provean_dict, variant, 'PSCORE')
-        provean_array.append(provean_score)
+        provean_array.append(1 - provean_score)
     provean_array = np.array(provean_array)
 
     mean_tpr = 0.0
@@ -175,6 +186,47 @@ def plot_varmod_roc(num_cats):
     plt.title('Receiver operating characteristic')
     plt.legend(loc="lower right")
 
+def plot_comp_roc_figure(pten_mutations, num_cats):
+    param_grid = [
+    {'C': [.1, 1, 10, 100, 1000 ],
+     'gamma': [0.1, 0.01, 0.001, 0.0001]},
+    ]
+
+    X, y, scorer, folds = get_x_y_scorer_folds(pten_mutations, num_cats)
+    cv = StratifiedKFold(y, n_folds=6, shuffle=True, random_state=0)
+    svc = svm.SVC(kernel='rbf', cache_size=2000, class_weight='auto',
+                  probability=True)
+    classifier = GridSearchCV(svc, param_grid=param_grid, scoring=scorer,
+                              cv=folds, n_jobs=-1)
+
+    mean_tpr = 0.0
+    mean_fpr = np.linspace(0,1,100)
+
+    color, label1 = get_colors_labels(num_cats)
+
+    for i, (train, test) in enumerate(cv):
+        probas_ = classifier.fit(X[train], y[train]).predict_proba(X[test])
+        # Compute ROC curve and area the curve
+        fpr, tpr, thresholds = roc_curve(y[test], probas_[:, 1])
+        mean_tpr += interp(mean_fpr, fpr, tpr)
+        mean_tpr[0] = 0.0
+        roc_auc = auc(fpr, tpr)
+        # plt.plot(fpr, tpr, lw=1, label='ROC fold %d (area = %0.2f)' % (i,
+        # roc_auc))
+
+    mean_tpr /= len(cv)
+    mean_tpr[-1] = 1.0
+    mean_auc = auc(mean_fpr, mean_tpr)
+    plt.plot(mean_fpr, mean_tpr, color,
+             label='ROC PTENpred (%0.2f)' % mean_auc, lw=2)
+
+    plt.xlim([-0.05, 1.05])
+    plt.ylim([-0.05, 1.05])
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('Receiver operating characteristic')
+    plt.legend(loc="lower right")
+
 if __name__ == "__main__":
 
     mut_list = get_full_mut_list()
@@ -182,12 +234,13 @@ if __name__ == "__main__":
 
     plt.figure(figsize=(8, 6))
 
-    plt.plot([0, 1], [0, 1], '--', color=(0.6, 0.6, 0.6), label='Luck')
+    plt.plot([0, 1], [0, 1], '--', color=(0.6, 0.6, 0.6), label='Luck (0.50)')
 
-    plot_roc_figure(pten_mutations, 2)
+
     plot_polyphen_roc(2)
     plot_provean_roc(2)
     plot_varmod_roc(2)
+    plot_comp_roc_figure(pten_mutations, 2)
 
     plot_pdf("pphenroc4.pdf")
 

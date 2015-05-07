@@ -72,7 +72,7 @@ INCLUDED_SCORES = [
     'psi',
 ]
 
-
+# Assigns numbers to category names depending on category split
 def get_cat_2(category):
     return {
         "SOMATIC": 1,
@@ -195,9 +195,9 @@ class PredictionPackage(object):
 
         if test:
             classifier, scaler, category_array, scaled_vector_array, X_test, \
-            y_test = \
+                y_test = \
                 get_prediction_info(num_cats, probs, mut_list, test=True,
-                                    **kwargs)
+                                        **kwargs)
             self.X_test = X_test
             self.y_test = y_test
         else:
@@ -305,12 +305,6 @@ def get_prediction_info(num_cats, probs, mut_list, test=False, **kwargs):
 
     pten_mutations = MutationGroup(mut_list)
 
-    print(pten_mutations.category_2_list)
-    print(pten_mutations.category_22_list)
-    print(pten_mutations.category_3_list)
-    print(pten_mutations.category_33_list)
-    print(pten_mutations.category_4_list)
-
     cat_array = {
         2: pten_mutations.category_2_list,
         22: pten_mutations.category_22_list,
@@ -359,16 +353,16 @@ def get_classifier(vector_array, cat_array, num_cats, probs, test=False,
     }[num_cats]
 
     folds = {
-        2: 10,
-        22: 10,
-        33: 10,
-        3: 10,
-        4: 10
+        2: 6,
+        22: 6,
+        33: 6,
+        3: 6,
+        4: 6
     }[num_cats]
 
     param_grid = [
-        {'C': [100, 200, 300, 400, 600, 800, 1000],
-         'gamma': [0.001, 0.0008, 0.0006, 0.0004, 0.0002,  0.0001]},
+        {'C': [.1, 1, 10, 100, 1000 ],
+         'gamma': [0.1, 0.01, 0.001, 0.0001]},
     ]
 
     cv = cross_validation.StratifiedKFold(y_train, folds, shuffle=True)
@@ -376,7 +370,7 @@ def get_classifier(vector_array, cat_array, num_cats, probs, test=False,
     clf = GridSearchCV(SVC(cache_size=2000,
                            class_weight='auto',
                            probability=probs),
-                       param_grid, scoring=scorer, n_jobs=-1, cv=cv)
+                       param_grid, n_jobs=-1, cv=cv, scoring=scorer)
 
     clf = clf.fit(X_train, y_train)
 
@@ -386,11 +380,10 @@ def get_classifier(vector_array, cat_array, num_cats, probs, test=False,
         return clf
 
 def stratified_tt_split(vectors, labels, **kwargs):
-    split1 = cross_validation.StratifiedShuffleSplit(
-        labels, 1, **kwargs
+    split1 = cross_validation.StratifiedShuffleSplit(labels, 1, **kwargs
     )
     for split in split1:
-        testIndex = split[0]
-        trainIndex = split[1]
+        testIndex = split[1]
+        trainIndex = split[0]
 
     return vectors[trainIndex], labels[trainIndex], vectors[testIndex], labels[testIndex]

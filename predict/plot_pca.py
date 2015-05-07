@@ -1,4 +1,14 @@
-__author__ = 'sean'
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+plot_pca.py
+
+Shrinks vectors down to two dimensions and fits to the SVC. Displays
+predictions using pyplot.
+
+usage: plot_pca.py
+"""
 
 from sklearn.svm import SVC
 from sklearn.decomposition import PCA

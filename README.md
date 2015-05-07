@@ -32,6 +32,6 @@ will install all of the required packages for PTENpred.
 
     ./classifyMutation.py [-c CAT_SPLIT] VARIANT
     
- `CAT_SPLIT` is a number that designates the way certain groups of mutations are categorized in the training data for each predictor. This is `2` by default, but can also be `22, 3,` or `4`.
+ `CAT_SPLIT` is a number that designates the way certain groups of mutations are categorized in the training data for each predictor. This is `2` by default, but can also be `22, 3,` or `4`. `VARIANT` is a required argument which is the identity of an amino acid change. This consists of the wild type amino acid in one-letter form, the codon position, and the variatn amino acid in one-letter form. Try `L70P` to test it out. `L70P` designates a change from leucine (L) to proline (P) at the 70th codon.
  
  PTENpred will give the possible categories for a specified prediction as well as the predicted category.

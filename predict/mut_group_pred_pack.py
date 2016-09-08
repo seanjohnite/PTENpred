@@ -229,10 +229,10 @@ class PredictionPackage(object):
         score_vector = []
         mapp_dict = make_mapp_dict()
         sus_struc_dict = make_suspect_score_dict(
-            "/opt/predict/datafiles/SuspectStructure.csv"
+            "datafiles/SuspectStructure.csv"
         )
         sus_seq_dict = make_suspect_score_dict(
-            "/opt/predict/datafiles/SuspectSequence.csv"
+            "datafiles/SuspectSequence.csv"
         )
         ss_and_asa_dict = make_ss_and_asa_dict()
         sub_ss_and_asa_dict = make_sub_ss_and_asa_dict()

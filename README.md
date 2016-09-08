@@ -37,3 +37,5 @@ will install all of the required packages for PTENpred.
      ./classifyMutation.py L70P
  
  PTENpred will give the possible categories for a specified prediction as well as the predicted category.
+
+You may also need to run the script once with the command line argument `-mk True`. This will remove and restore the predictor in the way that your system understands it. You can see all possible command line arguments for the script by running `./classifyMutation.py -h`.

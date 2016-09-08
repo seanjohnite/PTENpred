@@ -36,7 +36,7 @@ import csv
 
 def make_mapp_dict():
     mapp_list = []
-    with open("/opt/predict/datafiles/MAPP_output.csv", "r") as f:
+    with open("datafiles/MAPP_output.csv", "r") as f:
         reader = csv.DictReader(f)
         for row in reader:
             mapp_list.append(row)
@@ -59,7 +59,7 @@ def get_mapp_score(mapp_dict, codon, residue):
 
 
 def start_mut_list():
-    with open("/opt/predict/datafiles/CollatedMuts2.csv", "r") as f:
+    with open("datafiles/CollatedMuts2.csv", "r") as f:
         reader = csv.DictReader(f)
         mut_list = []
         for row in reader:
@@ -105,7 +105,7 @@ def add_mapp_scores(mut_list):
 
 
 def make_pph2_dict():
-    with open("/opt/predict/datafiles/pph2-full3.csv", "r") as f:
+    with open("datafiles/pph2-full3.csv", "r") as f:
         reader = csv.DictReader(f)
         pph2_dict = {}
         for row in reader:
@@ -133,7 +133,7 @@ def get_pph2_prob(pph2_dict, wtres, codon, mutres, score_string):
 
 
 def make_ss_and_asa_dict():
-    with open("/opt/predict/datafiles/SSandASA.csv", "r") as f:
+    with open("datafiles/SSandASA.csv", "r") as f:
         reader = csv.DictReader(f)
         ss_and_asa_dict = {}
         for row in reader:
@@ -143,7 +143,7 @@ def make_ss_and_asa_dict():
 
 
 def make_sub_ss_and_asa_dict():
-    with open("/opt/predict/datafiles/SpineXASASSP.csv") as f:
+    with open("datafiles/SpineXASASSP.csv") as f:
         reader = csv.DictReader(f)
         spine_x_dict = {}
         for row in reader:
@@ -233,9 +233,9 @@ def get_suspect_score(sus_str_dict, sus_seq_dict, codon, mut_res):
 
 def add_suspect_scores(mut_list):
     sus_str_dict = make_suspect_score_dict(
-        "/opt/predict/datafiles/SuspectStructure.csv")
+        "datafiles/SuspectStructure.csv")
     sus_seq_dict = make_suspect_score_dict(
-        "/opt/predict/datafiles/SuspectSequence.csv")
+        "datafiles/SuspectSequence.csv")
     for mut_dict in mut_list:
         codon = int(mut_dict["codon"])
         try:
@@ -248,7 +248,7 @@ def add_suspect_scores(mut_list):
 
 
 def make_var_mod_dict():
-    with open("/opt/predict/datafiles/VarmodResults2.csv") as f:
+    with open("datafiles/VarmodResults2.csv") as f:
         var_mod_dict = {}
         reader = csv.DictReader(f)
         for row in reader:
@@ -277,7 +277,7 @@ def add_var_mod_scores(mut_list):
 
 
 def make_provean_sift_dict():
-    with open("/opt/predict/datafiles/ProveanResults.csv") as f:
+    with open("datafiles/ProveanResults.csv") as f:
         provean_dict = {}
         reader = csv.DictReader(f)
         for row in reader:
